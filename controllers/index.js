@@ -1,13 +1,13 @@
-const Recipe  = require("../models/stock")
+const Stock  = require("../models/stock")
 
 
 // Create 
 const createItem = async (req, res) => {
     try {
-        const recipe = await new Recipe(req.body)
-        await recipe.save()
+        const stock = await new Stock(req.body)
+        await stock.save()
         return res.status(201).json({
-            recipe,
+            stock,
         })
 
     }catch(error) {
@@ -18,8 +18,8 @@ const createItem = async (req, res) => {
 // Read
 const getAllItems = async (req, res) => {
     try{
-        const recipes = await Recipe.find()
-        return res.status(200).json({recipes})
+        const stocks = await Stock.find()
+        return res.status(200).json({stocks})
     }catch(error){
         return res.status(500).send(error.message)
     }
@@ -29,11 +29,11 @@ const getAllItems = async (req, res) => {
 const getItemById = async (req,res) => {
     try{
         const {id} = req.params
-        const recipe = await Recipe.findById(id)
-        if(recipe){
-            return res.status(200).json({recipe})
+        const stock = await Stock.findById(id)
+        if(stock){
+            return res.status(200).json({stock})
         }
-        return res.status(404).send("Recipe with the specified ID does not exist")
+        return res.status(404).send("Stock with the specified ID does not exist")
 
     }catch(error){
         return res.status(500).send(error.message)
@@ -44,15 +44,15 @@ const getItemById = async (req,res) => {
 const updateItem = (req, res) => {
     try{
         const {id} = req.params
-        Recipe.findByIdAndUpdate(
-            id, req.body, {new: true}, (err, recipe) => {
+        Stock.findByIdAndUpdate(
+            id, req.body, {new: true}, (err, stock) => {
                 if(err){
                     res.status(500).send(err)
                 }
-                if(!recipe){
-                    res.status(500).send("Recipe not found")
+                if(!stock){
+                    res.status(500).send("Stock not found")
                 }
-                return res.status(200).json(recipe)
+                return res.status(200).json(stock)
             }
         )
     }catch(error){
@@ -63,7 +63,7 @@ const updateItem = (req, res) => {
 const deleteItem = async(req, res) => {
     try{
         const {id} = req.params
-        const deleted = await Recipe.findByIdAndDelete(id)
+        const deleted = await Stock.findByIdAndDelete(id)
         if(deleted){
             return res.status(200).send("Item deleted")
         }
