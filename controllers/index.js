@@ -39,7 +39,7 @@ const getItemById = async (req,res) => {
         return res.status(500).send(error.message)
     }
 }
-// rsfghgfds
+
 // updating any item we desire
 const updateItem = (req, res) => {
     try{
