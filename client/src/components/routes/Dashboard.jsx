@@ -6,20 +6,20 @@ export const Dashboard = () => {
       <div className="dashboard-container">
         <div className="dashboard-left-elements">
           <div className="overview">
-            <h1>Overview</h1>
+            <p>Overview</p>
           </div>
           <div className="latest-transactions">
-            <h1>Latest Transactions</h1>
+            <p>Latest Transactions</p>
           </div>
         </div>
 
         <div className="dashboard-right-elements">
           <div className="purchasable-stocks">
-            <h1>Purchasable Stocks</h1>
+            <p>Purchasable Stocks</p>
           </div>
         </div>
         <div className="trending-stocks">
-          <h1>Trending Stocks</h1>
+          <p>Trending Stocks</p>
         </div>
       </div>
     </Layout>
