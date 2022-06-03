@@ -1,11 +1,16 @@
-import { Layout } from "../shared/Layout";
 
-export const PurchaseStock = () => {
+
+export const PurchaseStock = (props) => {
+
+  
   return (
-    <Layout>
+    <div>
       <div>
-        <h1>Purchase Stock</h1>
+        {/* <h1>{props.symbol.description}</h1> */}
+        {/* <h1>{props.symbol.symbol}</h1>
+        <h3>{props.price}</h3> */}
+        
       </div>
-    </Layout>
+    </div>
   );
 };
