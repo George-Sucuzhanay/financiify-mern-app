@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Container } from "react-bootstrap"
+import { Row } from 'react-bootstrap'
+import { Col } from "react-bootstrap";
 
 export const TrendStocks = () => {
 
@@ -21,20 +24,20 @@ export const TrendStocks = () => {
     }
 
     return (
-        <div>
-            {/* change div container and row to mao into columns */}
-            <h1>Trending Stocks!</h1>
-            {(trends || []). map((trend, index) => {
-            return (
-            <div className="container" key={index}>
-                <div className="row">
-                    <h1>{trend.companyName}</h1>
-                    <h3>{trend.delayedPrice}</h3>
-                </div>
-                
-            </div>
-                )
-             })}
-        </div>
+       
+            // <h1>Trending Stocks!</h1>
+            <Container className="parentDiv">
+                <Row>
+                    {(trends || []).slice(0,6). map((trend, index) => {
+                        return (
+                            <Col key={index}>
+                                <h4>{trend.companyName}</h4>
+                                <h5>{trend.delayedPrice}</h5>
+                             </Col>
+                            )
+                    })}
+                </Row>
+            </Container>
+
     )
 }
