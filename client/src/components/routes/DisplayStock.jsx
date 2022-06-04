@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { StockProfiles } from "./StockProfiles";
 
 export const DisplayStock = () => {
   const [searchWord, setSearchWord] = useState("");
@@ -49,43 +50,37 @@ export const DisplayStock = () => {
 
   return (
     <div>
-      {/* use display stockand purchase stock */}
+    
+        {/* use display stockand purchase stock */}
 
-      <div className="search">
-        <h1>Search Stocks</h1>
-        <input
-          value={searchWord}
-          onChange={(e) => setSearchWord(e.target.value)}
-          className="myInput"
-          placeholder="Enter Stock Name"
-        />
 
-        <button id="searchButton" onClick={fetchData} type="button">
-          Click Me!
-        </button>
+        <div className="search">
+                <h1>Search Stocks</h1>
+                        <input value={searchWord} onChange={(e) => setSearchWord(e.target.value)} className="myInput" placeholder="Enter Stock Name"/>
 
-        {(symbols || []).map((sym, index) => {
-          return (
-            <div className="container" key={index}>
-              <div className="row">
-                <h1>{sym["1. symbol"]}</h1>
-                <h3>{sym["2. name"]}</h3>
-                <button
-                  id="tickerButton"
-                  onClick={() => setTickerAndFetch(sym["1. symbol"])}
-                  type="button"
-                >
-                  Click Me!
-                </button>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+                        <button id="searchButton" onClick={fetchData}type="button">Click Me!</button>
 
-      {/* {(symbols || []).map((symbol, index) => { */}
+                        {(symbols || []). map((sym, index) => {
+                          return (
+                            <div className= "container"key={index}>
+                              <div className="row">
+                                <h1>{sym["1. symbol"]}</h1>
+                                <h3>{sym["2. name"]}</h3>
+                                <button id="tickerButton" onClick={() => <StockProfiles/>} type="button">Click Me!</button> 
+                              </div>
+                            
+                              
+                            </div>
+                          )
+                        })}
 
-      {/* <PurchaseStock
+                           
+           
+        </div>
+        
+                  {/* {(symbols || []).map((symbol, index) => { */}
+                    
+                      {/* <PurchaseStock
                         symbols={symbols}
                         price={price}
                       /> */}

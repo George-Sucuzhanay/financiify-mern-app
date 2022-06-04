@@ -150,7 +150,7 @@ main {
   overflow: scroll;
 }
 
-/* .api-stocks {
+.api-stocks {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -164,7 +164,7 @@ main {
   border-radius: 10px;
   background-color: white;
   color: black;
-} */
+}
 
 .purchasable-stocks {
   display: flex;
