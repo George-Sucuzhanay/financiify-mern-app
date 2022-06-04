@@ -1,4 +1,5 @@
 import { Layout } from "../shared/Layout";
+import { DisplayStocks } from "./DisplayStocks";
 
 export const Dashboard = () => {
   return (
@@ -8,16 +9,14 @@ export const Dashboard = () => {
           <div className="overview">
             <p>Overview</p>
           </div>
+
           <div className="latest-transactions">
             <p>Latest Transactions</p>
           </div>
         </div>
 
-        <div className="dashboard-right-elements">
-          <div className="purchasable-stocks">
-            <p>Purchasable Stocks</p>
-          </div>
-        </div>
+        <DisplayStocks />
+
         <div className="trending-stocks">
           <p>Trending Stocks</p>
         </div>
