@@ -19,7 +19,8 @@ export const DisplayStocks = () => {
       url: `${process.env.REACT_APP_API_URL}/api/stocks`,
       method: "GET",
     });
-    console.log(response.data.stocks);
+    // console.log(process.env.REACT_APP_API_URL);
+    // console.log(response.data.stocks);
     setCurrentStocks(response.data.stocks);
   };
 
