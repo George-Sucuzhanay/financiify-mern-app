@@ -16,7 +16,7 @@ export const DisplayStocks = () => {
 
   const fetchAllStocks = async () => {
     const response = await axios({
-      url: `https://financify-backend.herokuapp.com/api/stocks`,
+      url: `${process.env.REACT_APP_API_URL}/api/stocks`,
       method: "GET",
     });
     console.log(response.data.stocks);
