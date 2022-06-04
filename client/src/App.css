@@ -102,6 +102,7 @@ main {
   gap: 20px;
   min-height: 90vh;
   width: 75%;
+  padding: 10px;
   border: solid white 0.2vw;
 }
 
@@ -136,13 +137,46 @@ main {
 .dashboard-right-elements {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  gap: 25px;
   contain: content;
   min-height: 90vh;
   width: 75%;
+  padding: 10px;
   border: solid white 0.2vw;
+}
+
+.api-stocks {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding-left: 2%;
+  min-height: 20vh;
+  width: 50vw;
+  border: solid black 0.1vw;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+}
+
+.purchasable-stocks {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+  padding-left: 2%;
+  min-height: 40vh;
+  width: 50vw;
+  border: solid black 0.1vw;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
 }
 
 .purchasable-stock {
@@ -150,6 +184,7 @@ main {
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 25px;
   padding-left: 2%;
   min-height: 40vh;
@@ -158,6 +193,12 @@ main {
   border-radius: 10px;
   background-color: white;
   color: black;
+}
+
+.buy-sell-button {
+  width: 15vw;
+  border: solid black 0.2vw;
+  border-radius: 10px;
 }
 
 .selected-stock-container {

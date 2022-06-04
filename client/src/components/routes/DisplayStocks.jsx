@@ -30,7 +30,7 @@ export const DisplayStocks = () => {
   const HandleRendering = () => {
     if (!isRendered) {
       return (
-        <div className="dashboard-right-elements">
+        <div className="purchasable-stocks">
           {currentStocks.map((data, key) => {
             return (
               <div
@@ -43,7 +43,12 @@ export const DisplayStocks = () => {
                 <p>{data.stock_symbol}</p>
                 <p>{data.quantity}</p>
                 <p>{data.totalCashValue}</p>
-                <NavLink to={`/dashboard/${data._id}`}>Buy & Sell</NavLink>
+                <NavLink
+                  to={`/dashboard/${data._id}`}
+                  className="buy-sell-button"
+                >
+                  Buy & Sell Button
+                </NavLink>
               </div>
             );
           })}

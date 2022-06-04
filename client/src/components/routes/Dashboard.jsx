@@ -1,5 +1,6 @@
 import { Layout } from "../shared/Layout";
 import { DisplayStock } from "./DisplayStock";
+import { DisplayStocks } from "./DisplayStocks";
 import { TrendStocks } from "./TrendStocks";
 
 export const Dashboard = () => {
@@ -17,12 +18,13 @@ export const Dashboard = () => {
         </div>
 
         <div className="dashboard-right-elements">
-          <div className="purchasable-stocks">
-            <DisplayStock/>
+          <div className="api-stocks">
+            <DisplayStock />
           </div>
+          <DisplayStocks />
         </div>
         <div className="trending-stocks">
-          <TrendStocks/>
+          <TrendStocks />
         </div>
       </div>
     </Layout>
