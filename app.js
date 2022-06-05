@@ -5,6 +5,8 @@ const routes = require("./routes")
 
 const app = express()
 
+app.use(cors())
+
 // app.use(cors({origin: "https://6296a2cfcac1020009154ca8--adorable-axolotl-f72454.netlify.app/"}))
 
 app.use(express.json())

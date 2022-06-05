@@ -20,7 +20,7 @@ export const Stock = () => {
 
   const fetchSingleStock = async () => {
     const response = await axios({
-      url: `https://financify-backend.herokuapp.com/api/stocks/${id}`,
+      url: `${process.env.REACT_APP_API_URL}/api/stocks/${id}`,
       method: "GET",
     });
     setSelectedStock(response.data.stock);
@@ -78,7 +78,7 @@ export const Stock = () => {
 
     const handleUpdating = async () => {
       await axios({
-        url: `https://financify-backend.herokuapp.com/api/stocks/${id}`,
+        url: `${process.env.REACT_APP_API_URL}/api/stocks/${id}`,
         method: "PUT",
         data: currentObjectData,
       });

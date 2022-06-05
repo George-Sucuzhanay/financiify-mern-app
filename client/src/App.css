@@ -190,7 +190,8 @@ main {
   gap: 25px;
   padding-left: 2%;
   min-height: 40vh;
-  width: 20vw;
+  width: 15vw;
+  margin: 10px;
   border: solid black 0.1vw;
   border-radius: 10px;
   background-color: white;
@@ -198,7 +199,12 @@ main {
 }
 
 .buy-sell-button {
-  width: 15vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 14vw;
   border: solid black 0.2vw;
   border-radius: 10px;
 }
@@ -327,9 +333,9 @@ main {
 .trending-stocks {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  height: 10vh;
+  height: 15vh;
   width: 80%;
   border: solid white 0.1vw;
 }
@@ -341,4 +347,13 @@ main {
   min-height: 100vh;
   width: 100%;
   background-color: #edf2fb;
+}
+
+.parentDiv {
+  display: flex;
+  flex-wrap: wrap;
+  /* for horizontal aligning of child divs */
+  justify-content: center;
+  /* for vertical aligning */
+  align-items: center;
 }
