@@ -1,14 +1,16 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { StockProfiles } from "./StockProfiles";
+import Select from 'react-select';
 
-export const DisplayStock = () => {
+
+export const DisplayStock = ({setMode, setTicker}) => {
   const [searchWord, setSearchWord] = useState("");
   const [symbols, setSymbols] = useState([]);
   // const [name, setName] = useState("")
   // const [price, setPrice] = useState("")
-  const [ticker, setTicker] = useState("");
   // let symbol = "APPL"
+  
+
 
   useEffect(() => {
     fetchData();
@@ -47,6 +49,11 @@ export const DisplayStock = () => {
   };
   // console.log(symbols)
   // console.log(ticker)
+  
+  // understanding what onSelectHandler does to change the view of the right side component
+  function onSelectHandler(){
+    setMode('sss')
+  }
 
   return (
     <div>
@@ -58,21 +65,24 @@ export const DisplayStock = () => {
                 <h1>Search Stocks</h1>
                         <input value={searchWord} onChange={(e) => setSearchWord(e.target.value)} className="myInput" placeholder="Enter Stock Name"/>
 
-                        <button id="searchButton" onClick={fetchData}type="button">Click Me!</button>
+                        <button id="searchButton" onClick={fetchData}type="button">Click Me!</button> 
 
-                        {(symbols || []). map((sym, index) => {
+                         {(symbols || []). map((sym, index) => {
                           return (
                             <div className= "container"key={index}>
                               <div className="row">
                                 <h1>{sym["1. symbol"]}</h1>
                                 <h3>{sym["2. name"]}</h3>
-                                <button id="tickerButton" onClick={() => <StockProfiles/>} type="button">Click Me!</button> 
+                                <button id="tickerButton" onClick={() => setTickerAndFetch(sym["1. symbol"])} type="button">Click Me!</button> 
                               </div>
                             
                               
                             </div>
                           )
                         })}
+                        <br></br>
+
+                      
 
                            
            
