@@ -1,5 +1,5 @@
 const db = require("../db");
-const { StockModel, OverviewModel } = require("../models/stock");
+const Stock = require("../models/stock");
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
@@ -49,15 +49,7 @@ const main = async () => {
     },
   ];
 
-  const overview = {
-    account_value: 1000000,
-    buying_power: 1000000,
-  };
-
-  // await StockModel.deleteMany();
-  // await OverviewModel.deleteMany();
-  await StockModel.insertMany(stocks);
-  await OverviewModel.insertMany(overview);
+  await Stock.insertMany(stocks);
   console.log("Created Stocks!");
 };
 const run = async () => {

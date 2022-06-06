@@ -1,5 +1,4 @@
 const Stock = require("../models/stock");
-const Overview = require("../models/stock");
 
 // Create
 const createItem = async (req, res) => {
@@ -69,55 +68,10 @@ const deleteItem = async (req, res) => {
   }
 };
 
-// Read
-const getAllOverview = async (req, res) => {
-  try {
-    const overview = await Overview.find();
-    return res.status(200).json({ overview });
-  } catch (error) {
-    return res.status(500).send(error.message);
-  }
-};
-
-// getonebyID
-const getOverviewById = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const overview = await Overview.findById(id);
-    if (overview) {
-      return res.status(200).json({ overview });
-    }
-    // return res.status(404).send("Stock with the specified ID does not exist");
-  } catch (error) {
-    return res.status(500).send(error.message);
-  }
-};
-
-// updating any item we desire
-const updateOverview = (req, res) => {
-  try {
-    const { id } = req.params;
-    Overview.findByIdAndUpdate(id, req.body, { new: true }, (err, overview) => {
-      if (err) {
-        res.status(500).send(err);
-      }
-      if (!overview) {
-        // res.status(500).send("Stock not found");
-      }
-      return res.status(200).json(overview);
-    });
-  } catch (error) {
-    return res.status(500).send(error.message);
-  }
-};
-
 module.exports = {
   createItem,
   getAllItems,
   getItemById,
   updateItem,
   deleteItem,
-  getAllOverview,
-  getOverviewById,
-  updateOverview,
 };

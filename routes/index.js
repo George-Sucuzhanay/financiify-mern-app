@@ -9,7 +9,4 @@ router.get("/stocks/:id", controllers.getItemById);
 router.put("/stocks/:id", controllers.updateItem);
 router.delete("/stocks/:id", controllers.deleteItem);
 
-router.get("/overview", controllers.getAllOverview);
-router.get("/overview/:id", controllers.getOverviewById);
-router.put("/overview/:id", controllers.updateOverview);
 module.exports = router;
