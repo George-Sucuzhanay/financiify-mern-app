@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { Form } from "./Form";
 
 export const Stock = () => {
   const [selectedStock, setSelectedStock] = useState({});
@@ -36,7 +37,7 @@ export const Stock = () => {
     setSelectedStock(response.data.stock);
     setCurrentStockQuantity(response.data.stock.quantity);
     setCurrentTotalPrice(selectedStock.stock_price);
-    if (selectedStock.quantity == 0) {
+    if (selectedStock.quantity === 0) {
       destroy();
       return navigate("/dashboard");
     }
@@ -62,13 +63,13 @@ export const Stock = () => {
 
   const handleInputValueChange = (event) => {
     event.preventDefault();
-    if (event.target.name == "plus") {
+    if (event.target.name === "plus") {
       setCurrentValue(currentValue + 1);
       setCurrentTotalPrice(currentTotalPrice + selectedStock.stock_price);
-    } else if (event.target.name == "minus" && currentValue >= 2) {
+    } else if (event.target.name === "minus" && currentValue >= 2) {
       setCurrentValue(currentValue - 1);
       setCurrentTotalPrice(currentTotalPrice - selectedStock.stock_price);
-    } else if (event.target.name == "quantity" && currentValue >= 1) {
+    } else if (event.target.name === "quantity" && currentValue >= 1) {
       const typedInValue = Number(event.target.value);
       setCurrentValue(typedInValue);
       if (currentValue > typedInValue) {
@@ -119,6 +120,7 @@ export const Stock = () => {
     if (!isRendered) {
       return (
         <div className="stock-info">
+          <h1>Company Bio</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
             corporis fuga minus quasi praesentium nam, laudantium iure porro
@@ -135,43 +137,15 @@ export const Stock = () => {
             <h2>Market Price</h2>
             <h2>Total</h2>
           </div>
-          <div className="transaction-values">
-            <form
-              onSubmit={(e) => handleSubmit(e)}
-              className="quantity-container"
-              name={transactionType}
-            >
-              <input
-                type="button"
-                value="-"
-                className="minus"
-                name="minus"
-                onClick={(e) => handleInputValueChange(e)}
-              />
-              <input
-                className="quantity"
-                type="number"
-                step="1"
-                min="1"
-                max=""
-                name="quantity"
-                defaultValue={currentValue}
-                onChange={(e) => handleInputValueChange(e)}
-                pattern=""
-                inputMode=""
-              />
-              <input
-                type="button"
-                defaultValue="+"
-                className="plus"
-                name="plus"
-                onClick={(e) => handleInputValueChange(e)}
-              />
-            </form>
+          <Form
+            handleSubmit={handleSubmit}
+            currentValue={currentValue}
+            transactionType={transactionType}
+            handleInputValueChange={handleInputValueChange}
+            selectedStock={selectedStock}
+            currentTotalPrice={currentTotalPrice}
+          />
 
-            <h2>${selectedStock.stock_price}</h2>
-            <h2>${currentTotalPrice.toFixed(2)}</h2>
-          </div>
           <div className="company-statistics">
             <h2>Market Cap</h2>
             <h2>Open Price</h2>
@@ -188,8 +162,8 @@ export const Stock = () => {
       <div className="purchasable-stock">
         <p>Company: {selectedStock.stock_name}</p>
         <p>Symbol: {selectedStock.stock_symbol}</p>
-        <p>Market Price: {selectedStock.stock_price}</p>
         <p>Amount Held: {selectedStock.quantity}</p>
+        <p>Market Price: {selectedStock.stock_price}</p>
         <p>
           Asset Total: $
           {(selectedStock.stock_price * selectedStock.quantity).toFixed(2)}
@@ -198,13 +172,25 @@ export const Stock = () => {
 
       <div className="selected-stock-info">
         <div className="stock-buttons">
-          <button onClick={(e) => handleRenderingClick(e)} name="buy">
+          <button
+            onClick={(e) => handleRenderingClick(e)}
+            name="buy"
+            className="buy"
+          >
             Buy
           </button>
-          <button onClick={(e) => handleRenderingClick(e)} name="cancel">
+          <button
+            onClick={(e) => handleRenderingClick(e)}
+            name="cancel"
+            className="cancel"
+          >
             Cancel
           </button>
-          <button onClick={(e) => handleRenderingClick(e)} name="sell">
+          <button
+            onClick={(e) => handleRenderingClick(e)}
+            name="sell"
+            className="sell"
+          >
             Sell
           </button>
         </div>

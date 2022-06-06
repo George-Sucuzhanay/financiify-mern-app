@@ -246,6 +246,7 @@ main {
   width: 100%;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
+  font-size: 1.5em;
   background-color: #edf2fb;
 }
 
@@ -270,7 +271,7 @@ main {
 .stock-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   min-height: 35vh;
   width: 70vw;
@@ -340,20 +341,20 @@ main {
   font-weight: 600;
 }
 
-.stock-buttons button:nth-child(1):hover {
+.buy:hover,
+.buy:focus {
   border: green solid 3px;
   background-color: green;
   color: white;
 }
-
-.stock-buttons button:nth-child(2):hover {
-  border: grey solid 3px;
-  background-color: grey;
-  color: white;
-}
-.stock-buttons button:nth-child(3):hover {
+.sell:hover {
   border: red solid 3px;
   background-color: red;
+  color: white;
+}
+.cancel:hover {
+  border: grey solid 3px;
+  background-color: grey;
   color: white;
 }
 
