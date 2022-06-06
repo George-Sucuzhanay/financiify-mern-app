@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const Stock = new Schema(
+const Stock = new Schema([
   {
     stock_name: String,
     stock_price: Number,
@@ -10,8 +10,8 @@ const Stock = new Schema(
     quantity: Number,
     totalCashValue: Number,
   },
-  { timestamps: true }
-);
+  { timestamps: true },
+]);
 
 const Overview = new Schema({
   account_value: Number,
