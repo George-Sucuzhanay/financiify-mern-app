@@ -39,16 +39,21 @@ export const DisplayStocks = () => {
                 key={key}
                 defaultValue={data._id}
               >
-                <p>{data.stock_name}</p>
-                <p>{data.stock_price}</p>
-                <p>{data.stock_symbol}</p>
-                <p>{data.quantity}</p>
-                <p>{data.totalCashValue}</p>
-                <NavLink
-                  to={`/dashboard/${data._id}`}
-                  className="buy-sell-button"
-                >
-                  Buy & Sell Button
+                <div className="purchasable-stock-left">
+                  <p>Company: {data.stock_name}</p>
+                  <p>Symbol: {data.stock_symbol}</p>
+                  <p>Amount Held: {data.quantity}</p>
+                </div>
+                <div className="purchasable-stock-left">
+                  <p>Market Price: ${data.stock_price}</p>
+                  <p>
+                    Asset Value: $
+                    {(data.stock_price * data.quantity).toFixed(2)}
+                  </p>
+                </div>
+
+                <NavLink to={`/dashboard/${data._id}`} className="trade-button">
+                  Trade
                 </NavLink>
               </div>
             );
