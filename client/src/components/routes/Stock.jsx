@@ -55,6 +55,8 @@ export const Stock = () => {
       setTransactionType("sell");
     } else if (event.target.name === "cancel") {
       setIsRendered(false);
+      setCurrentValue(1);
+      setCurrentTotalPrice(selectedStock.stock_price);
     }
   };
 
