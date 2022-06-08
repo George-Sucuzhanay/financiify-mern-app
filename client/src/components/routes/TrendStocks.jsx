@@ -25,15 +25,16 @@ export const TrendStocks = () => {
     }
   };
 
+
   return (
     // <h1>Trending Stocks!</h1>
     <Container className="parentDiv">
       <Row>
         {(trends || []).slice(0, 6).map((trend, index) => {
           return (
-            <Col key={index}>
-              <h4>{trend.companyName}</h4>
-              <h5>{trend.delayedPrice}</h5>
+            <Col key={index} className="mytrends">
+              <h4>{trend.symbol}</h4>
+              <h6>{trend.latestPrice} ({trend.changePercent.toString().substr(0,5)})</h6>
             </Col>
           );
         })}
