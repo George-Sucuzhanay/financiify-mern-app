@@ -5,11 +5,9 @@ import { TrendStocks } from "./TrendStocks";
 
 export const Dashboard = () => {
 
-  'single-stock-select' // 'sss'
-  'default-view' // 'dv'
- 
   // const [mode, setMode] = useState('dv')
   // const [ticker, setTicker] = useState("");
+
 
   return (
     <Layout>
@@ -26,6 +24,7 @@ export const Dashboard = () => {
         {/* We are using lifting state up to track the stockTicker acrossFrom com1 into com2 */}
         {/* We are using another useState for the different screens of the right-side of the dashboard */}
 
+
         {/* {mode === 'dv' &&<div className="dashboard-right-elements">
           <div className="api-stocks">
             <DisplayStock setMode={setMode} setTicker={setTicker}/>
@@ -39,6 +38,7 @@ export const Dashboard = () => {
             </div>
             <DisplayStocks />
         </div>
+
 
 
 

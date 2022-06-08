@@ -4,6 +4,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scrollbar-width: auto;
+  scrollbar-color: #404040 #ffffff;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }
 
 a:hover,
@@ -101,9 +107,8 @@ main {
   align-items: center;
   gap: 20px;
   min-height: 90vh;
-  width: 45%;
+  width: 38.5%;
   padding: 10px;
-  border: solid white 0.2vw;
 }
 
 .overview {
@@ -112,8 +117,8 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 35vh;
-  width: 80%;
+  min-height: 42vh;
+  width: 100%;
   border-radius: 10px;
   border: solid white 0.1vw;
   background-color: #edf2fb;
@@ -126,8 +131,8 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 35vh;
-  width: 80%;
+  min-height: 42vh;
+  width: 100%;
   border: solid white 0.1vw;
   border-radius: 10px;
   background-color: #edf2fb;
@@ -142,12 +147,14 @@ main {
   align-items: center;
   gap: 25px;
   contain: content;
-  min-height: 90vh;
-  max-height: 90vh;
-  width: 45vw;
-  padding: 10px;
-  border: solid white 0.2vw;
+  min-height: 86vh;
+  max-height: 86vh;
+  width: 58.5%;
+  padding-top: 10px;
+  border-radius: 10px;
+  background-color: #edf2fb;
   overflow: scroll;
+  scroll: ;
 }
 
 .api-stocks {
@@ -159,10 +166,14 @@ main {
   gap: 25px;
   padding-left: 2%;
   min-height: 20vh;
-  width: 50vw;
+  width: 55vw;
   border: solid black 0.1vw;
   border-radius: 10px;
   background-color: white;
+  color: black;
+}
+
+.my-stocks {
   color: black;
 }
 
@@ -172,25 +183,20 @@ main {
   flex-direction: row;
   justify-content: center;
   gap: 25px;
-  padding-left: 2%;
-  min-height: 40vh;
-  width: 50vw;
-  border: solid black 0.1vw;
-  border-radius: 10px;
-  background-color: white;
+  min-height: 100%;
+  width: 100%;
   color: black;
 }
 
 .purchasable-stock {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 25px;
-  padding-left: 2%;
+  gap: 10px;
   min-height: 40vh;
-  width: 15vw;
+  width: 27vw;
   margin: 10px;
   border: solid black 0.1vw;
   border-radius: 10px;
@@ -198,15 +204,36 @@ main {
   color: black;
 }
 
-.buy-sell-button {
+.purchasable-stock-left,
+.purchasable-stock-right {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  min-height: 40vh;
+  width: 10vw;
+  font-size: 0.8em;
+  background-color: white;
+  color: black;
+}
+
+.trade-button {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 14vw;
+  margin-bottom: 10px;
   border: solid black 0.2vw;
-  border-radius: 10px;
+  border-radius: 50px;
+}
+
+.trade-button:hover {
+  color: white;
+  background-color: #003049;
+  border: solid #003049 0.2vw;
 }
 
 .selected-stock-container {
@@ -219,7 +246,7 @@ main {
   width: 100%;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-  border: solid purple;
+  font-size: 1.5em;
   background-color: #edf2fb;
 }
 
@@ -244,7 +271,7 @@ main {
 .stock-info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   min-height: 35vh;
   width: 70vw;
@@ -314,18 +341,27 @@ main {
   font-weight: 600;
 }
 
-.stock-buttons button:nth-child(1):hover {
+.buy:hover,
+.buy:focus {
   border: green solid 3px;
+  background-color: green;
+  color: white;
 }
-
-.stock-buttons button:nth-child(2):hover {
+.sell:hover {
   border: red solid 3px;
+  background-color: red;
+  color: white;
+}
+.cancel:hover {
+  border: grey solid 3px;
+  background-color: grey;
+  color: white;
 }
 
 .stock-buttons button {
   height: 5vh;
   width: 10vw;
-  border-radius: 10px;
+  border-radius: 50px;
   background-color: #edf2fb;
   cursor: pointer;
 }
