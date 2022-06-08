@@ -8,16 +8,29 @@ export const Stock = () => {
   const [isRendered, setIsRendered] = useState(false);
   const [updated, setUpdated] = useState(false);
   const [deleted, setDeleted] = useState(false);
-  const [currentStockQuantity, setCurrentStockQuantity] = useState(
-    selectedStock.quantity
-  );
   const [transactionType, setTransactionType] = useState("buy");
   const [currentValue, setCurrentValue] = useState(1);
   const [updatedValue, setUpdatedValue] = useState(0);
-  const [currentTotalPrice, setCurrentTotalPrice] = useState(0);
+  const [updatedAssetValue, setUpdatedAssetValue] = useState(0);
+  const [currentStockQuantity, setCurrentStockQuantity] = useState(
+    selectedStock.quantity
+  );
   const [currentObjectData, setCurrentObjectData] = useState({
     quantity: 0,
   });
+  const [currentAssetTotal, setCurrentAssetTotal] = useState(
+    selectedStock.totalCashValue
+  );
+  const [currentAssetObjectData, setCurrentAssetObjectData] = useState({
+    totalCashValue: 0,
+  });
+  const [currentTotalPrice, setCurrentTotalPrice] = useState(0);
+  const [currentBuyButtonColor, setCurrentBuyButtonColor] = useState("#edf2fb");
+  const [currentCancelButtonColor, setCurrentCancelButtonColor] =
+    useState("#edf2fb");
+  const [currentSellButtonColor, setCurrentSellButtonColor] =
+    useState("#edf2fb");
+  const transactionButtonColors = ["green", "grey", "red"];
   const { id } = useParams();
   let navigate = useNavigate();
   const destroy = () => {
@@ -34,10 +47,14 @@ export const Stock = () => {
       url: `${process.env.REACT_APP_API_URL}/api/stocks/${id}`,
       method: "GET",
     });
+
     setSelectedStock(response.data.stock);
     setCurrentStockQuantity(response.data.stock.quantity);
+    setCurrentAssetTotal(response.data.stock.totalCashValue);
     setCurrentTotalPrice(selectedStock.stock_price);
-    if (selectedStock.quantity === 0) {
+    console.log(response.data.stock.totalCashValue);
+
+    if (selectedStock.quantity <= 0) {
       destroy();
       return navigate("/dashboard");
     }
@@ -51,13 +68,22 @@ export const Stock = () => {
     if (event.target.name === "buy") {
       setIsRendered(true);
       setTransactionType("buy");
+      setCurrentBuyButtonColor(transactionButtonColors[0]);
+      setCurrentCancelButtonColor("#edf2fb");
+      setCurrentSellButtonColor("#edf2fb");
     } else if (event.target.name === "sell") {
       setIsRendered(true);
       setTransactionType("sell");
+      setCurrentBuyButtonColor("#edf2fb");
+      setCurrentCancelButtonColor("#edf2fb");
+      setCurrentSellButtonColor(transactionButtonColors[2]);
     } else if (event.target.name === "cancel") {
       setIsRendered(false);
       setCurrentValue(1);
       setCurrentTotalPrice(selectedStock.stock_price);
+      setCurrentBuyButtonColor("#edf2fb");
+      setCurrentCancelButtonColor(transactionButtonColors[1]);
+      setCurrentSellButtonColor("#edf2fb");
     }
   };
 
@@ -82,22 +108,33 @@ export const Stock = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target.name);
+    // console.log(event.target.name);
     if (!updated && event.target.name === "buy") {
       setUpdated(true);
-      setUpdatedValue(currentValue + currentStockQuantity);
+      setUpdatedValue(currentStockQuantity + currentValue);
+      setUpdatedAssetValue((currentAssetTotal + currentTotalPrice).toFixed(2));
+      console.log(currentTotalPrice);
     } else {
       setUpdated(true);
       setUpdatedValue(currentStockQuantity - currentValue);
+      setUpdatedAssetValue((currentAssetTotal - currentTotalPrice).toFixed(2));
     }
     setCurrentValue(1);
+    setCurrentTotalPrice(0);
   };
 
   useEffect(() => {
     const updatedField = { quantity: updatedValue };
+    const updatedTotalAsset = { totalCashValue: updatedAssetValue };
     setUpdatedValue(0);
+    console.log(updatedTotalAsset);
     const editedItem = Object.assign(currentObjectData, updatedField);
+    const editedCashValue = Object.assign(
+      currentAssetObjectData,
+      updatedTotalAsset
+    );
     setCurrentObjectData(editedItem);
+    setCurrentAssetObjectData(editedCashValue);
 
     const handleUpdating = async () => {
       await axios({
@@ -105,8 +142,15 @@ export const Stock = () => {
         method: "PUT",
         data: currentObjectData,
       });
+
+      await axios({
+        url: `${process.env.REACT_APP_API_URL}/api/stocks/${id}`,
+        method: "PUT",
+        data: currentAssetObjectData,
+      });
       console.log("database is updated!!!");
       setCurrentObjectData({ quantity: 0 });
+      setCurrentAssetObjectData({ totalCashValue: 0 });
     };
 
     if (updated) {
@@ -165,8 +209,8 @@ export const Stock = () => {
         <p>Amount Held: {selectedStock.quantity}</p>
         <p>Market Price: {selectedStock.stock_price}</p>
         <p>
-          Asset Total: $
-          {(selectedStock.stock_price * selectedStock.quantity).toFixed(2)}
+          Asset Total: ${selectedStock.totalCashValue}
+          {/* {(selectedStock.stock_price * selectedStock.quantity).toFixed(2)} */}
         </p>
       </div>
 
@@ -176,6 +220,9 @@ export const Stock = () => {
             onClick={(e) => handleRenderingClick(e)}
             name="buy"
             className="buy"
+            style={{
+              backgroundColor: currentBuyButtonColor,
+            }}
           >
             Buy
           </button>
@@ -183,6 +230,7 @@ export const Stock = () => {
             onClick={(e) => handleRenderingClick(e)}
             name="cancel"
             className="cancel"
+            style={{ backgroundColor: currentCancelButtonColor }}
           >
             Cancel
           </button>
@@ -190,6 +238,7 @@ export const Stock = () => {
             onClick={(e) => handleRenderingClick(e)}
             name="sell"
             className="sell"
+            style={{ backgroundColor: currentSellButtonColor }}
           >
             Sell
           </button>

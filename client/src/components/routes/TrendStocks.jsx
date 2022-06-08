@@ -19,7 +19,7 @@ export const TrendStocks = () => {
           `https://cloud.iexapis.com/stable/stock/market/collection/list?collectionName=mostactive&token=${process.env.REACT_APP_IEXCLOUD_TOKEN}`
         )
         .then((trendingStocks) => setTrends(trendingStocks.data));
-      console.log(trendingStocks);
+      // console.log(trendingStocks);
     } catch (error) {
       // console.log(error)
     }
