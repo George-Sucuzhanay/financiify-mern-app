@@ -3,11 +3,26 @@ import { DisplayStock } from "./DisplayStock";
 import { DisplayStocks } from "./DisplayStocks";
 import { TrendStocks } from "./TrendStocks";
 
+import axios from "axios";
+import { useState, useEffect } from "react";
+
+
 export const Dashboard = () => {
 
   // const [mode, setMode] = useState('dv')
   // const [ticker, setTicker] = useState("");
 
+
+  const fetchAllStocks = async () => {
+    const response = await axios({
+      url: `${process.env.REACT_APP_API_URL}/api/stocks`,
+      method: "GET",
+    });
+  };
+
+  useEffect(() => {
+    fetchAllStocks();
+  }, []);
 
   return (
     <Layout>
@@ -15,6 +30,8 @@ export const Dashboard = () => {
         <div className="dashboard-left-elements">
           <div className="overview">
             <p>Overview</p>
+            <p>Account Value: $1000000</p>
+            <p>Buying Power: $1000000</p>
           </div>
 
           <div className="latest-transactions">

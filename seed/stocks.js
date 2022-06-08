@@ -17,7 +17,7 @@ const main = async () => {
       stock_price: 123.22,
       stock_symbol: "NFLX",
       quantity: 2,
-      totalCashValue: 426.68,
+      totalCashValue: 246.44,
     },
     {
       stock_name: "Alphabet",
@@ -38,7 +38,7 @@ const main = async () => {
       stock_price: 28.94,
       stock_symbol: "RBLX",
       quantity: 5,
-      totalCashValue: 114.7,
+      totalCashValue: 144.7,
     },
     {
       stock_name: "Palantir",
@@ -48,7 +48,7 @@ const main = async () => {
       totalCashValue: 50.76,
     },
   ];
-
+  await Stock.deleteMany();
   await Stock.insertMany(stocks);
   console.log("Created Stocks!");
 };

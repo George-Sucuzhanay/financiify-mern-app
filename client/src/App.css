@@ -341,8 +341,7 @@ main {
   font-weight: 600;
 }
 
-.buy:hover,
-.buy:focus {
+.buy:hover {
   border: green solid 3px;
   background-color: green;
   color: white;
@@ -357,12 +356,15 @@ main {
   background-color: grey;
   color: white;
 }
+.cancel:hover {
+  border: grey solid 3px;
+}
 
 .stock-buttons button {
   height: 5vh;
   width: 10vw;
   border-radius: 50px;
-  background-color: #edf2fb;
+  /* background-color: #edf2fb; */
   cursor: pointer;
 }
 

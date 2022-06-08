@@ -46,10 +46,7 @@ export const DisplayStocks = () => {
                 </div>
                 <div className="purchasable-stock-left">
                   <p>Market Price: ${data.stock_price}</p>
-                  <p>
-                    Asset Value: $
-                    {(data.stock_price * data.quantity).toFixed(2)}
-                  </p>
+                  <p>Asset Value: ${data.totalCashValue.toFixed(2)}</p>
                 </div>
 
                 <NavLink to={`/dashboard/${data._id}`} className="trade-button">
