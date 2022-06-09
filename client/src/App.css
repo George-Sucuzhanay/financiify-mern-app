@@ -17,6 +17,12 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scrollbar-width: auto;
+  scrollbar-color: #404040 #ffffff;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }
 
 a:hover,
@@ -25,6 +31,13 @@ a:link,
 a:visited {
   text-decoration: none;
   color: var(--textColor);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 
 header,
@@ -105,41 +118,278 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
-  width: 45%;
-  border: solid white 0.2vw;
+  gap: 20px;
+  min-height: 90vh;
+  width: 38.5%;
+  padding: 10px;
 }
 
 .overview {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  min-height: 35vh;
-  width: 80%;
+  justify-content: center;
+  align-items: center;
+  min-height: 42vh;
+  width: 100%;
+  border-radius: 10px;
   border: solid white 0.1vw;
+  background-color: #edf2fb;
+  color: black;
 }
 
 .latest-transactions {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
-  min-height: 35vh;
-  width: 80%;
+  justify-content: center;
+  align-items: center;
+  min-height: 42vh;
+  width: 100%;
   border: solid white 0.1vw;
+  border-radius: 10px;
+  background-color: #edf2fb;
+  color: black;
 }
 
 .dashboard-right-elements {
-  min-height: 80vh;
-  width: 45%;
-  border: solid white 0.2vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 25px;
+  contain: content;
+  min-height: 86vh;
+  max-height: 86vh;
+  width: 58.5%;
+  padding-top: 10px;
+  border-radius: 10px;
+  background-color: #edf2fb;
+  overflow: scroll;
+  scroll: ;
+}
+
+.api-stocks {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding-left: 2%;
+  min-height: 20vh;
+  width: 55vw;
+  border: solid black 0.1vw;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+}
+
+.my-stocks {
+  color: black;
+}
+
+.purchasable-stocks {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+  min-height: 100%;
+  width: 100%;
+  color: black;
+}
+
+.purchasable-stock {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+  min-height: 40vh;
+  width: 27vw;
+  margin: 10px;
+  border: solid black 0.1vw;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+}
+
+.purchasable-stock-left,
+.purchasable-stock-right {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  min-height: 40vh;
+  width: 10vw;
+  font-size: 0.8em;
+  background-color: white;
+  color: black;
+}
+
+.trade-button {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 14vw;
+  margin-bottom: 10px;
+  border: solid black 0.2vw;
+  border-radius: 50px;
+}
+
+.trade-button:hover {
+  color: white;
+  background-color: #003049;
+  border: solid #003049 0.2vw;
+}
+
+.selected-stock-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  min-height: 100vh;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.5em;
+  background-color: #edf2fb;
+}
+
+.selected-stock-container .purchasable-stock,
+.selected-stock-info {
+  background-color: white;
+  border: solid black;
+  border-radius: 10px;
+}
+
+.selected-stock-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 50vh;
+  width: 90%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.stock-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 35vh;
+  width: 70vw;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 1.5em;
+}
+
+.transaction-options {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 35vh;
+  width: 70vw;
+  contain: content;
+}
+
+.transaction-titles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50vw;
+}
+
+.transaction-values {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50vw;
+}
+
+.company-statistics {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50vw;
+}
+
+.minus,
+.plus {
+  height: 4vh;
+  width: 3vw;
+}
+
+.quantity {
+  height: 4vh;
+  width: 7vw;
+  text-align: center;
+}
+
+.stock-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 10vh;
+  width: 50%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.buy:hover {
+  border: green solid 3px;
+  background-color: green;
+  color: white;
+}
+.sell:hover {
+  border: red solid 3px;
+  background-color: red;
+  color: white;
+}
+.cancel:hover {
+  border: grey solid 3px;
+  background-color: grey;
+  color: white;
+}
+.cancel:hover {
+  border: grey solid 3px;
+}
+
+.stock-buttons button {
+  height: 5vh;
+  width: 10vw;
+  border-radius: 50px;
+  /* background-color: #edf2fb; */
+  cursor: pointer;
 }
 
 .trending-stocks {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  height: 10vh;
-  width: 80%;
+  height: 20vh;
+  width: 100%;
   border: solid white 0.1vw;
+  color: black;
 }
 
 .financial-literacy-container {
@@ -149,4 +399,19 @@ main {
   min-height: 100vh;
   width: 100%;
   background-color: var(--darkBlue);
+}
+
+.myrow {
+  display: flex;
+  flex-wrap: wrap;
+  /* for horizontal aligning of child divs */
+  justify-content: space-evenly;
+  /* for vertical aligning */
+  align-items: stretch;
+  
+}
+.mytrends{
+  background-color: #EDF2FB;
+  margin: 18px;
+  border-radius: 15px
 }
