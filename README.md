@@ -1,10 +1,8 @@
-# ==Financiify 💸==
+# Financiify 💸
 
 ###### 
 
 > Financiify is an application that will serve to help users gain financial literacy and empowerment with investing. The app utilizes =="paper money"== to simulate trading with stocks.
-> Type on the left :arrow_left: and see the rendered result on the right. :arrow_right: 
-
 
 
  Wireframes 📈

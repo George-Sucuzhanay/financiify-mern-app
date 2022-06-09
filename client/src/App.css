@@ -1,5 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Roboto&display=swap");
 
+:root{
+  --textColor: #000000;
+  --darkBlue: #003049;
+  --moneyGreen: #5CB25E;
+  --alertRed: #9B1C31;
+  --pastelPink: #fbf5ff;
+  --pastelBlue: #EDF2FB;
+  --pastelYellow: #FFF9EC;
+
+
+}
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,7 +30,7 @@ a:active,
 a:link,
 a:visited {
   text-decoration: none;
-  color: black;
+  color: var(--textColor);
 }
 
 input::-webkit-outer-spin-button,
@@ -36,7 +49,7 @@ footer {
   min-height: 10vh;
   max-height: 10vh;
   width: 100vw;
-  border: solid black 0.1vw;
+  border: solid --textColor 0.1vw;
   font-family: "Poppins", sans-serif;
   font-weight: 800;
 }
@@ -60,7 +73,7 @@ main {
   min-height: 80vh;
   max-height: 90vh;
   min-width: 100%;
-  background-color: #edf2fb;
+  background-color: var(--pastelBlue);
 }
 
 .home-container * {
@@ -75,13 +88,13 @@ main {
 }
 
 .home-top-container {
-  background-color: #edf2fb;
+  background-color: var(--pastelBlue);
 }
 .home-middle-container {
-  background-color: #fff9ec;
+  background-color: var(--pastelYellow);
 }
 .home-bottom-container {
-  background-color: #fbf5ff;
+  background-color: var(--pastelPink);
 }
 
 .dashboard-container {
@@ -93,7 +106,7 @@ main {
   gap: 10px;
   min-height: 100vh;
   width: 100%;
-  background-color: #003049;
+  background-color: var(--darkBlue);
   color: white;
   font-family: "Roberto ", sans-serif;
   font-weight: 400;
@@ -154,7 +167,6 @@ main {
   border-radius: 10px;
   background-color: #edf2fb;
   overflow: scroll;
-  scroll: ;
 }
 
 .api-stocks {
@@ -385,7 +397,7 @@ main {
   justify-content: center;
   min-height: 100vh;
   width: 100%;
-  background-color: #edf2fb;
+  background-color: var(--darkBlue);
 }
 
 .myrow {
