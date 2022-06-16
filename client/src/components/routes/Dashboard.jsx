@@ -7,6 +7,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export const Dashboard = () => {
+  const [currentTransactionData, setCurrentTransactionData] = useState([]);
   // const [mode, setMode] = useState('dv')
   // const [ticker, setTicker] = useState("");
 
@@ -21,6 +22,19 @@ export const Dashboard = () => {
     fetchAllStocks();
   }, []);
 
+  const fetchAllTransactions = async () => {
+    const response = await axios({
+      url: `${process.env.REACT_APP_API_TRANSACTIONS}`,
+      method: "GET",
+    });
+    setCurrentTransactionData(response.data.transactions);
+  };
+
+  useEffect(() => {
+    fetchAllTransactions();
+  }, []);
+
+  // console.log(currentTransactionData.slice(0).reverse());
   return (
     <Layout>
       <div className="dashboard-container">
@@ -34,94 +48,35 @@ export const Dashboard = () => {
           <div className="latest-transactions">
             <h1>Latest Transactions</h1>
 
-            <div className="transaction-row">
-              <div className="transaction-column">
-                <p>Symbol</p>
-                <p>Symbol</p>
-              </div>
-              <div className="transaction-column">
-                <p>Action</p>
-                <p>Action</p>
-              </div>
-              <div className="transaction-column">
-                <p>QTY</p>
-                <p>QTY</p>
-              </div>
-              <div className="transaction-column">
-                <p>Price</p>
-                <p>Price</p>
-              </div>
-              <div className="transaction-column">
-                <p>Total</p>
-                <p>Total</p>
-              </div>
-            </div>
-            <div className="transaction-row">
-              <div className="transaction-column">
-                <p>Symbol</p>
-                <p>Symbol</p>
-              </div>
-              <div className="transaction-column">
-                <p>Action</p>
-                <p>Action</p>
-              </div>
-              <div className="transaction-column">
-                <p>QTY</p>
-                <p>QTY</p>
-              </div>
-              <div className="transaction-column">
-                <p>Price</p>
-                <p>Price</p>
-              </div>
-              <div className="transaction-column">
-                <p>Total</p>
-                <p>Total</p>
-              </div>
-            </div>
-            <div className="transaction-row">
-              <div className="transaction-column">
-                <p>Symbol</p>
-                <p>Symbol</p>
-              </div>
-              <div className="transaction-column">
-                <p>Action</p>
-                <p>Action</p>
-              </div>
-              <div className="transaction-column">
-                <p>QTY</p>
-                <p>QTY</p>
-              </div>
-              <div className="transaction-column">
-                <p>Price</p>
-                <p>Price</p>
-              </div>
-              <div className="transaction-column">
-                <p>Total</p>
-                <p>Total</p>
-              </div>
-            </div>
-            <div className="transaction-row">
-              <div className="transaction-column">
-                <p>Symbol</p>
-                <p>Symbol</p>
-              </div>
-              <div className="transaction-column">
-                <p>Action</p>
-                <p>Action</p>
-              </div>
-              <div className="transaction-column">
-                <p>QTY</p>
-                <p>QTY</p>
-              </div>
-              <div className="transaction-column">
-                <p>Price</p>
-                <p>Price</p>
-              </div>
-              <div className="transaction-column">
-                <p>Total</p>
-                <p>Total</p>
-              </div>
-            </div>
+            {currentTransactionData
+              .slice(0)
+              .reverse()
+              .map((data, key) => {
+                return (
+                  <div className="transaction-row" key={key}>
+                    <div className="transaction-column">
+                      <p>Symbol</p>
+                      <p>{data.symbol}</p>
+                    </div>
+                    <div className="transaction-column">
+                      <p>Action</p>
+                      <p>{data.action.toUpperCase()}</p>
+                    </div>
+                    <div className="transaction-column">
+                      <p>QTY</p>
+                      <p>{data.qty}</p>
+                    </div>
+                    <div className="transaction-column">
+                      <p>Price</p>
+                      <p>${data.price}</p>
+                    </div>
+                    <div className="transaction-column">
+                      <p>Total</p>
+                      <p>${data.total}</p>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
         </div>
         {/* We are using lifting state up to track the stockTicker acrossFrom com1 into com2 */}

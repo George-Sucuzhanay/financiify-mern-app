@@ -24,6 +24,13 @@ export const Stock = () => {
   const [currentAssetObjectData, setCurrentAssetObjectData] = useState({
     totalCashValue: 0,
   });
+  const [currentTransactionObject, setCurrentTransactionObject] = useState({
+    symbol: null,
+    action: null,
+    qty: null,
+    price: null,
+    total: null,
+  });
   const [currentTotalPrice, setCurrentTotalPrice] = useState(0);
   const [currentBuyButtonColor, setCurrentBuyButtonColor] = useState("#edf2fb");
   const [currentCancelButtonColor, setCurrentCancelButtonColor] =
@@ -117,13 +124,90 @@ export const Stock = () => {
         setUpdatedAssetValue(
           (currentAssetTotal + currentTotalPrice).toFixed(2)
         );
+        const updatedFieldSymbol = { symbol: selectedStock.stock_symbol };
+        const updatedFieldAction = { action: transactionType };
+        const updatedFieldQty = { qty: currentValue };
+        const updatedFieldPrice = { price: selectedStock.stock_price };
+        const updatedFieldTotal = { total: currentTotalPrice };
+
+        const editedFieldSymbol = Object.assign(
+          currentTransactionObject,
+          updatedFieldSymbol
+        );
+
+        const editedFieldAction = Object.assign(
+          currentTransactionObject,
+          updatedFieldAction
+        );
+
+        const editedFieldQty = Object.assign(
+          currentTransactionObject,
+          updatedFieldQty
+        );
+
+        const editedFieldPrice = Object.assign(
+          currentTransactionObject,
+          updatedFieldPrice
+        );
+
+        const editedFieldTotal = Object.assign(
+          currentTransactionObject,
+          updatedFieldTotal
+        );
+
+        setCurrentTransactionObject(
+          editedFieldSymbol,
+          editedFieldAction,
+          editedFieldQty,
+          editedFieldPrice,
+          editedFieldTotal
+        );
       } else {
         setUpdated(true);
         setUpdatedValue(currentStockQuantity - currentValue);
         setUpdatedAssetValue(
           (currentAssetTotal - currentTotalPrice).toFixed(2)
         );
+        const updatedFieldSymbol = { symbol: selectedStock.stock_symbol };
+        const updatedFieldAction = { action: transactionType };
+        const updatedFieldQty = { qty: currentValue };
+        const updatedFieldPrice = { price: selectedStock.stock_price };
+        const updatedFieldTotal = { total: currentTotalPrice };
+
+        const editedFieldSymbol = Object.assign(
+          currentTransactionObject,
+          updatedFieldSymbol
+        );
+
+        const editedFieldAction = Object.assign(
+          currentTransactionObject,
+          updatedFieldAction
+        );
+
+        const editedFieldQty = Object.assign(
+          currentTransactionObject,
+          updatedFieldQty
+        );
+
+        const editedFieldPrice = Object.assign(
+          currentTransactionObject,
+          updatedFieldPrice
+        );
+
+        const editedFieldTotal = Object.assign(
+          currentTransactionObject,
+          updatedFieldTotal
+        );
+
+        setCurrentTransactionObject(
+          editedFieldSymbol,
+          editedFieldAction,
+          editedFieldQty,
+          editedFieldPrice,
+          editedFieldTotal
+        );
       }
+
       setCurrentValue(1);
       setCurrentTotalPrice(0);
     } else {
@@ -137,6 +221,7 @@ export const Stock = () => {
   };
 
   useEffect(() => {
+    console.log(currentTransactionObject);
     const updatedField = { quantity: updatedValue };
     const updatedTotalAsset = { totalCashValue: updatedAssetValue };
     setUpdatedValue(0);
@@ -160,13 +245,22 @@ export const Stock = () => {
         method: "PUT",
         data: currentAssetObjectData,
       });
-      // console.log("database is updated!!!");
+
       setCurrentObjectData({ quantity: 0 });
       setCurrentAssetObjectData({ totalCashValue: 0 });
     };
 
+    const handleCreatingTransactionData = async () => {
+      await axios({
+        url: `${process.env.REACT_APP_API_TRANSACTIONS}`,
+        method: "POST",
+        data: currentTransactionObject,
+      });
+    };
+
     if (updated) {
       handleUpdating();
+      handleCreatingTransactionData();
       setUpdated(false);
     }
     fetchSingleStock();
