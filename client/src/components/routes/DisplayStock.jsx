@@ -11,7 +11,7 @@ export const DisplayStock = () => {
 
   // const [searchWord, setSearchWord] = useState("");
 
-
+  const [symbol, setSymbol] = useState("")
   // const [items, setItems] = useState([])
   const [inputValue, setValue] = useState(" ")
   const [selectedValue, setSelectedValue] = useState(null)
@@ -124,8 +124,14 @@ export const DisplayStock = () => {
   //   )
   // }
   
-
-  return (
+  const retrieveSymbol = () => {
+    if(selectedValue){
+      let mysymbol = selectedValue["1. symbol"]
+      setSymbol(mysymbol)
+    }
+  }
+  
+   return (
     <div>
     
         {/* use display stockand purchase stock */}
@@ -147,9 +153,9 @@ export const DisplayStock = () => {
                     onChange={handleChange}
                     />
                     {/* {selectedValue} */}
-                    <StockProfiles selectedValue={selectedValue}/>
+                    <StockProfiles symbol={() => retrieveSymbol}/>
                     
-
+                    {}
                         {/* <input value={searchWord} onChange={(e) => setSearchWord(e.target.value)} className="myInput" placeholder="Enter Stock Name"/>
 
                         <button id="searchButton" onClick={fetchData}type="button">Click Me!</button> 

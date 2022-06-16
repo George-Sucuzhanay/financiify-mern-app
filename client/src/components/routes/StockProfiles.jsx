@@ -1,18 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export const StockProfiles = ({selectedValue}) => {
+export const StockProfiles = ({symbol}) => {
 
     // const mySym = (JSON.stringify(selectedValue["1. symbol"] || {}, null, 2))
     // console.log(typeof(mySym))
 
     const [stock, setStock] = useState([])
 
-    const fetchProfile = async (mySym) => {
+   
+    const fetchProfile = async (symbol) => {
           try {
             const stockProfile = await axios
               .get(
-                `https://cloud.iexapis.com/stable/stock/${mySym}.toLowerCase()}/quote?&token=${
+                `https://cloud.iexapis.com/stable/stock/${symbol}.toLowerCase()}/quote?&token=${
                   process.env.REACT_APP_IEXCLOUD_TOKEN
                 }`
               )
@@ -22,14 +23,15 @@ export const StockProfiles = ({selectedValue}) => {
                 
               });
           } catch (error) {}
-        };
+    };
 
 
     return(
         <div>
-            {/* {selectedValue} */}
-            {/* {selectedValue} */}
             <h1>Rendering my Stock Profile component</h1>
+            <h2>{`${symbol}`}</h2>
+            <h3>ee</h3>
+            <h3>{stock}</h3>
             {/* <h3>{JSON.stringify(props.selectedValue["1. symbol"] || {}, null, 2)}</h3> */}
 
         </div>
