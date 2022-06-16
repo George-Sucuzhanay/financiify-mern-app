@@ -1,17 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Roboto&display=swap");
 
-:root{
+:root {
   --textColor: #000000;
   --darkBlue: #003049;
-  --moneyGreen: #5CB25E;
-  --alertRed: #9B1C31;
+  --moneyGreen: #5cb25e;
+  --alertRed: #9b1c31;
   --pastelPink: #fbf5ff;
-  --pastelBlue: #EDF2FB;
-  --pastelYellow: #FFF9EC;
-
-
+  --pastelBlue: #edf2fb;
+  --pastelYellow: #fff9ec;
 }
-
 
 * {
   box-sizing: border-box;
@@ -141,15 +138,50 @@ main {
 .latest-transactions {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
   min-height: 42vh;
+  max-height: 42vh;
   width: 100%;
   border: solid white 0.1vw;
   border-radius: 10px;
   background-color: #edf2fb;
   color: black;
+  overflow: scroll;
+  contain: content;
+}
+
+.latest-transactions h1 {
+  margin-top: 1vh;
+  font-size: 1.7rem;
+}
+
+.transaction-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-height: 7vh;
+  width: 95%;
+  border: solid black 0.1vw;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.transaction-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 7vh;
+  width: 20%;
+  font-size: 1rem;
+}
+
+.transaction-column p {
+  margin-bottom: 2.5vh;
+  height: 0;
 }
 
 .dashboard-right-elements {
@@ -342,6 +374,24 @@ main {
   text-align: center;
 }
 
+.return-button {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 14vw;
+  border: solid black 0.2vw;
+  border-radius: 50px;
+  background-color: white;
+}
+
+.return-button:hover {
+  color: white;
+  background-color: #003049;
+  border: solid #003049 0.2vw;
+}
+
 .stock-buttons {
   display: flex;
   flex-direction: row;
@@ -356,18 +406,18 @@ main {
 .buy:hover {
   border: green solid 3px;
   background-color: green;
-  color: white;
 }
+
 .sell:hover {
   border: red solid 3px;
   background-color: red;
-  color: white;
 }
+
 .cancel:hover {
   border: grey solid 3px;
   background-color: grey;
-  color: white;
 }
+
 .cancel:hover {
   border: grey solid 3px;
 }
@@ -383,12 +433,50 @@ main {
 .trending-stocks {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  height: 20vh;
+  margin-bottom: 10px;
+  height: 10vh;
   width: 100%;
-  border: solid white 0.1vw;
+  /* border: solid white 0.1vw; */
   color: black;
+}
+
+.confirmation-screen {
+  position: absolute;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1vh;
+  height: 30vh;
+  width: 40vw;
+  border: solid purple;
+  background-color: white;
+  contain: content;
+  z-index: 99;
+}
+
+.close-button {
+  align-self: right;
+  text-align: right;
+  padding-right: 1vw;
+  height: 5vh;
+  width: 100%;
+  font-size: 2.3rem;
+}
+
+.close-button:after {
+  content: "x";
+  cursor: pointer;
+}
+
+.confirmation-screen p {
+  text-align: center;
+  width: 100%;
+}
+
+.confirmation-screen .stock-buttons {
+  width: 29vw;
 }
 
 .financial-literacy-container {
@@ -407,10 +495,39 @@ main {
   justify-content: space-evenly;
   /* for vertical aligning */
   align-items: stretch;
-  
 }
-.mytrends{
-  background-color: #EDF2FB;
+
+.parentDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  min-width: 100vw;
+  height: 15vh;
+}
+
+.mytrends {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 18px;
-  border-radius: 15px
+  height: 9vh;
+  max-width: 14.5vw;
+  min-width: 14.5vw;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  background-color: #edf2fb;
+  contain: content;
+}
+
+.mytrendsdata {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  height: 3vh;
+  width: 8vw;
 }

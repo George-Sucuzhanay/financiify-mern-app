@@ -31,8 +31,10 @@ export const Stock = () => {
   const [currentSellButtonColor, setCurrentSellButtonColor] =
     useState("#edf2fb");
   const transactionButtonColors = ["green", "grey", "red"];
+  const [isConfirmationHidden, setIsConfirmationHidden] = useState("none");
   const { id } = useParams();
   let navigate = useNavigate();
+
   const destroy = () => {
     axios({
       url: `${process.env.REACT_APP_API_URL}/api/stocks/${id}`,
@@ -52,7 +54,6 @@ export const Stock = () => {
     setCurrentStockQuantity(response.data.stock.quantity);
     setCurrentAssetTotal(response.data.stock.totalCashValue);
     setCurrentTotalPrice(selectedStock.stock_price);
-    console.log(response.data.stock.totalCashValue);
 
     if (selectedStock.quantity <= 0) {
       destroy();
@@ -106,28 +107,39 @@ export const Stock = () => {
     }
   };
 
+  const closeModal = (event) => {
+    event.preventDefault();
+    if (event.target.name === "yes") {
+      setIsConfirmationHidden("none");
+      if (!updated && transactionType == "buy") {
+        setUpdated(true);
+        setUpdatedValue(currentStockQuantity + currentValue);
+        setUpdatedAssetValue(
+          (currentAssetTotal + currentTotalPrice).toFixed(2)
+        );
+      } else {
+        setUpdated(true);
+        setUpdatedValue(currentStockQuantity - currentValue);
+        setUpdatedAssetValue(
+          (currentAssetTotal - currentTotalPrice).toFixed(2)
+        );
+      }
+      setCurrentValue(1);
+      setCurrentTotalPrice(0);
+    } else {
+      return setIsConfirmationHidden("none");
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(event.target.name);
-    if (!updated && event.target.name === "buy") {
-      setUpdated(true);
-      setUpdatedValue(currentStockQuantity + currentValue);
-      setUpdatedAssetValue((currentAssetTotal + currentTotalPrice).toFixed(2));
-      console.log(currentTotalPrice);
-    } else {
-      setUpdated(true);
-      setUpdatedValue(currentStockQuantity - currentValue);
-      setUpdatedAssetValue((currentAssetTotal - currentTotalPrice).toFixed(2));
-    }
-    setCurrentValue(1);
-    setCurrentTotalPrice(0);
+    setIsConfirmationHidden("flex");
   };
 
   useEffect(() => {
     const updatedField = { quantity: updatedValue };
     const updatedTotalAsset = { totalCashValue: updatedAssetValue };
     setUpdatedValue(0);
-    console.log(updatedTotalAsset);
     const editedItem = Object.assign(currentObjectData, updatedField);
     const editedCashValue = Object.assign(
       currentAssetObjectData,
@@ -148,7 +160,7 @@ export const Stock = () => {
         method: "PUT",
         data: currentAssetObjectData,
       });
-      console.log("database is updated!!!");
+      // console.log("database is updated!!!");
       setCurrentObjectData({ quantity: 0 });
       setCurrentAssetObjectData({ totalCashValue: 0 });
     };
@@ -201,6 +213,28 @@ export const Stock = () => {
     }
   };
 
+  const HandleTransactionConfirmation = () => {
+    return (
+      <div
+        className="confirmation-screen"
+        style={{ top: window.innerHeight / 3, display: isConfirmationHidden }}
+      >
+        <span className="close-button" onClick={(e) => closeModal(e)}></span>
+
+        <p>Are you sure you want to buy amount?</p>
+
+        <div className="stock-buttons">
+          <button onClick={(e) => closeModal(e)} name="yes">
+            Yes
+          </button>
+          <button onClick={(e) => closeModal(e)} name="no">
+            No
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="selected-stock-container">
       <div className="purchasable-stock">
@@ -208,11 +242,18 @@ export const Stock = () => {
         <p>Symbol: {selectedStock.stock_symbol}</p>
         <p>Amount Held: {selectedStock.quantity}</p>
         <p>Market Price: {selectedStock.stock_price}</p>
-        <p>
-          Asset Total: ${selectedStock.totalCashValue}
-          {/* {(selectedStock.stock_price * selectedStock.quantity).toFixed(2)} */}
-        </p>
+        <p>Asset Total: ${selectedStock.totalCashValue}</p>
       </div>
+
+      <button
+        className="return-button"
+        onClick={(e) => {
+          e.preventDefault();
+          navigate("/dashboard");
+        }}
+      >
+        Return to Previous Page
+      </button>
 
       <div className="selected-stock-info">
         <div className="stock-buttons">
@@ -245,6 +286,7 @@ export const Stock = () => {
         </div>
 
         <HandleRendering />
+        <HandleTransactionConfirmation />
       </div>
     </div>
   );

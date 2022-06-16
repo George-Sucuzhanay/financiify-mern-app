@@ -32,7 +32,96 @@ export const Dashboard = () => {
           </div>
 
           <div className="latest-transactions">
-            <p>Latest Transactions</p>
+            <h1>Latest Transactions</h1>
+
+            <div className="transaction-row">
+              <div className="transaction-column">
+                <p>Symbol</p>
+                <p>Symbol</p>
+              </div>
+              <div className="transaction-column">
+                <p>Action</p>
+                <p>Action</p>
+              </div>
+              <div className="transaction-column">
+                <p>QTY</p>
+                <p>QTY</p>
+              </div>
+              <div className="transaction-column">
+                <p>Price</p>
+                <p>Price</p>
+              </div>
+              <div className="transaction-column">
+                <p>Total</p>
+                <p>Total</p>
+              </div>
+            </div>
+            <div className="transaction-row">
+              <div className="transaction-column">
+                <p>Symbol</p>
+                <p>Symbol</p>
+              </div>
+              <div className="transaction-column">
+                <p>Action</p>
+                <p>Action</p>
+              </div>
+              <div className="transaction-column">
+                <p>QTY</p>
+                <p>QTY</p>
+              </div>
+              <div className="transaction-column">
+                <p>Price</p>
+                <p>Price</p>
+              </div>
+              <div className="transaction-column">
+                <p>Total</p>
+                <p>Total</p>
+              </div>
+            </div>
+            <div className="transaction-row">
+              <div className="transaction-column">
+                <p>Symbol</p>
+                <p>Symbol</p>
+              </div>
+              <div className="transaction-column">
+                <p>Action</p>
+                <p>Action</p>
+              </div>
+              <div className="transaction-column">
+                <p>QTY</p>
+                <p>QTY</p>
+              </div>
+              <div className="transaction-column">
+                <p>Price</p>
+                <p>Price</p>
+              </div>
+              <div className="transaction-column">
+                <p>Total</p>
+                <p>Total</p>
+              </div>
+            </div>
+            <div className="transaction-row">
+              <div className="transaction-column">
+                <p>Symbol</p>
+                <p>Symbol</p>
+              </div>
+              <div className="transaction-column">
+                <p>Action</p>
+                <p>Action</p>
+              </div>
+              <div className="transaction-column">
+                <p>QTY</p>
+                <p>QTY</p>
+              </div>
+              <div className="transaction-column">
+                <p>Price</p>
+                <p>Price</p>
+              </div>
+              <div className="transaction-column">
+                <p>Total</p>
+                <p>Total</p>
+              </div>
+            </div>
           </div>
         </div>
         {/* We are using lifting state up to track the stockTicker acrossFrom com1 into com2 */}

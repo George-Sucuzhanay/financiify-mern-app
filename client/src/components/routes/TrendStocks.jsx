@@ -6,11 +6,7 @@ import { Col } from "react-bootstrap";
 
 export const TrendStocks = () => {
   const [trends, setTrends] = useState([]);
-
-  useEffect(() => {
-    fetchData();
-    // eslint-disable-next-line
-  }, []);
+  const [color, setColor] = useState("");
 
   const fetchData = async () => {
     try {
@@ -25,20 +21,41 @@ export const TrendStocks = () => {
     }
   };
 
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     // <h1>Trending Stocks!</h1>
-    <Container className="parentDiv">
-      <Row>
-        {(trends || []).slice(0, 6).map((trend, index) => {
+    <div className="parentDiv">
+      {(trends || []).slice(0, 6).map((trend, index) => {
+        if (trend.changePercent < 0) {
           return (
             <Col key={index} className="mytrends">
-              <h4>{trend.symbol}</h4>
-              <h6>{trend.latestPrice} ({trend.changePercent.toString().substr(0,5)})</h6>
+              <p>{trend.symbol}</p>
+              <div className="mytrendsdata">
+                <p>{trend.latestPrice}</p>
+                <p style={{ color: "red" }}>
+                  ({trend.changePercent.toString().substr(0, 5)})
+                </p>
+              </div>
             </Col>
           );
-        })}
-      </Row>
-    </Container>
+        } else {
+          return (
+            <Col key={index} className="mytrends">
+              <p>{trend.symbol}</p>
+              <div className="mytrendsdata">
+                <p>{trend.latestPrice}</p>
+                <p style={{ color: "green" }}>
+                  ({trend.changePercent.toString().substr(0, 5)})
+                </p>
+              </div>
+            </Col>
+          );
+        }
+      })}
+    </div>
   );
 };
