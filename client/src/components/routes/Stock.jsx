@@ -2,9 +2,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Form } from "./Form";
+import { StockProfiles } from "./StockProfiles";
 
 export const Stock = () => {
-  const [selectedStock, setSelectedStock] = useState({});
+  const [selectedStock, setSelectedStock] = useState({}); // use selectedStock to render company info
   const [isRendered, setIsRendered] = useState(false);
   const [updated, setUpdated] = useState(false);
   const [deleted, setDeleted] = useState(false);
@@ -61,8 +62,8 @@ export const Stock = () => {
     setCurrentStockQuantity(response.data.stock.quantity);
     setCurrentAssetTotal(response.data.stock.totalCashValue);
     setCurrentTotalPrice(selectedStock.stock_price);
-
-    if (selectedStock.quantity <= 0) {
+    // make useState for stockSymbol to render
+    if (selectedStock.quantity === 0) {
       destroy();
       return navigate("/dashboard");
     }
@@ -265,18 +266,16 @@ export const Stock = () => {
     }
     fetchSingleStock();
   }, [currentStockQuantity, currentObjectData, id, updated, updatedValue]);
-
+  
   const HandleRendering = () => {
     if (!isRendered) {
+      
+
       return (
         <div className="stock-info">
-          <h1>Company Bio</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
-            corporis fuga minus quasi praesentium nam, laudantium iure porro
-            possimus aliquam facere nulla sequi? Laudantium excepturi neque
-            voluptas doloribus omnis nostrum.
-          </p>
+          <StockProfiles symbol={selectedStock.stock_symbol}/>
+
+
         </div>
       );
     } else {
