@@ -533,3 +533,17 @@ main {
   height: 3vh;
   width: 8vw;
 }
+
+.myParent {
+  margin: 10px;
+  display: flex;
+}
+.myChild {
+  flex: 1;
+  margin: 10px;
+  text-align: center;
+}
+.industries {
+  list-style-position: inside;
+  font-size: 30px;
+}

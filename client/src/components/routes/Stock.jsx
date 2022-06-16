@@ -273,17 +273,9 @@ export const Stock = () => {
 
       return (
         <div className="stock-info">
-          <h1>Company Bio</h1>
-          <h2>{selectedStock.stock_symbol}</h2>
           <StockProfiles symbol={selectedStock.stock_symbol}/>
 
-          
 
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
-            corporis fuga minus quasi praesentium nam, laudantium iure porro
-            
-          </p>
         </div>
       );
     } else {
