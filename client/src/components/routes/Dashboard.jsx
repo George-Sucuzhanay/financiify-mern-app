@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 
 export const Dashboard = () => {
   const [currentTransactionData, setCurrentTransactionData] = useState([]);
+  const [currentAccountValue, setCurrentAccountValue] = useState(1000000);
+  const [currentBuyingPower, setCurrentBuyingPower] = useState(1000000);
   // const [mode, setMode] = useState('dv')
   // const [ticker, setTicker] = useState("");
 
@@ -16,6 +18,7 @@ export const Dashboard = () => {
       url: `${process.env.REACT_APP_API_URL}/api/stocks`,
       method: "GET",
     });
+    // console.log(response);
   };
 
   useEffect(() => {
@@ -34,15 +37,32 @@ export const Dashboard = () => {
     fetchAllTransactions();
   }, []);
 
-  // console.log(currentTransactionData.slice(0).reverse());
+  const handleUpdatingOverviewValues = () => {
+    let updatedValue = parseFloat(currentBuyingPower);
+    currentTransactionData.forEach((data) => {
+      if (data.action == "buy") {
+        return (updatedValue = updatedValue - parseFloat(data.total));
+      } else {
+        return (updatedValue = updatedValue + parseFloat(data.total));
+      }
+    });
+    setCurrentBuyingPower(updatedValue.toFixed(2));
+  };
+
+  useEffect(() => {
+    handleUpdatingOverviewValues();
+  }, [currentTransactionData]);
+
   return (
     <Layout>
       <div className="dashboard-container">
         <div className="dashboard-left-elements">
           <div className="overview">
-            <p>Overview</p>
-            <p>Account Value: $1000000</p>
-            <p>Buying Power: $1000000</p>
+            <div className="overview-values">
+              <p>Overview</p>
+              <p>Account Value: ${currentAccountValue}</p>
+              <p>Buying Power: ${currentBuyingPower}</p>
+            </div>
           </div>
 
           <div className="latest-transactions">
@@ -72,7 +92,7 @@ export const Dashboard = () => {
                     </div>
                     <div className="transaction-column">
                       <p>Total</p>
-                      <p>${data.total}</p>
+                      <p>${parseFloat(data.total).toFixed(2)}</p>
                     </div>
                   </div>
                 );

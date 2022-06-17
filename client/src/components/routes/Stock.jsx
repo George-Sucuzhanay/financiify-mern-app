@@ -221,7 +221,6 @@ export const Stock = () => {
   };
 
   useEffect(() => {
-    console.log(currentTransactionObject);
     const updatedField = { quantity: updatedValue };
     const updatedTotalAsset = { totalCashValue: updatedAssetValue };
     setUpdatedValue(0);
