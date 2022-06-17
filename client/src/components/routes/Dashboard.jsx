@@ -2,14 +2,12 @@ import { Layout } from "../shared/Layout";
 import { DisplayStock } from "./DisplayStock";
 import { DisplayStocks } from "./DisplayStocks";
 import { TrendStocks } from "./TrendStocks";
-
+import portfolioImage from "../../assets/portfolio.png"
 import axios from "axios";
 import { useState, useEffect } from "react";
 
 export const Dashboard = () => {
   const [currentTransactionData, setCurrentTransactionData] = useState([]);
-  // const [mode, setMode] = useState('dv')
-  // const [ticker, setTicker] = useState("");
 
   const fetchAllStocks = async () => {
     const response = await axios({
@@ -39,10 +37,15 @@ export const Dashboard = () => {
     <Layout>
       <div className="dashboard-container">
         <div className="dashboard-left-elements">
-          <div className="overview">
+          <div className="overview myParent">
+            <div className="myChild">
             <p>Overview</p>
             <p>Account Value: $1000000</p>
             <p>Buying Power: $1000000</p>
+            </div>
+            <div className="myChild">
+              <img id="portfolioImage"src={portfolioImage} alt=""></img>
+            </div>
           </div>
 
           <div className="latest-transactions">

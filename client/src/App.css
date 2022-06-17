@@ -74,18 +74,17 @@ main {
 }
 
 .home-container * {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+ 
   width: 100%;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
+  font-size: 5vh;
 }
 
 .home-top-container {
   background-color: var(--pastelBlue);
+  height: 90vh;
+  
 }
 .home-middle-container {
   background-color: var(--pastelYellow);
@@ -117,14 +116,13 @@ main {
   align-items: center;
   gap: 20px;
   min-height: 90vh;
-  width: 38.5%;
+  width: 45%;
   padding: 10px;
 }
 
 .overview {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 42vh;
@@ -196,7 +194,7 @@ main {
   contain: content;
   min-height: 86vh;
   max-height: 86vh;
-  width: 58.5%;
+  width: 54%;
   padding-top: 10px;
   border-radius: 10px;
   background-color: #edf2fb;
@@ -204,15 +202,14 @@ main {
 }
 
 .api-stocks {
-  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 25px;
   padding-left: 2%;
-  min-height: 20vh;
-  width: 55vw;
+  min-height: 15vh;
+  width: 44vw;
   border: solid black 0.1vw;
   border-radius: 10px;
   background-color: white;
@@ -242,7 +239,7 @@ main {
   align-items: center;
   gap: 10px;
   min-height: 40vh;
-  width: 27vw;
+  width: 21vw;
   margin: 10px;
   border: solid black 0.1vw;
   border-radius: 10px;
@@ -257,7 +254,7 @@ main {
   flex-direction: row;
   justify-content: left;
   align-items: center;
-  min-height: 40vh;
+  min-height: 36vh;
   width: 10vw;
   font-size: 0.8em;
   background-color: white;
@@ -535,15 +532,39 @@ main {
 }
 
 .myParent {
-  margin: 10px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
 }
 .myChild {
   flex: 1;
   margin: 10px;
   text-align: center;
+  font-size: 30px;
 }
 .industries {
   list-style-position: inside;
   font-size: 30px;
+}
+.myChild2 {
+  margin: 10px;
+  
+}
+#hero{
+  width: 69%;
+  margin: 70px;
+  text-align: center;
+}
+.heroText{
+  text-align: left;
+  margin-left: 20px;
+  padding: 90px;
+}
+#herotext2{
+  color: #6361FA;
+}
+#portfolioImage{
+  width: 100%;
 }
