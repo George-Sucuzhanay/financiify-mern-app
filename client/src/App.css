@@ -571,3 +571,10 @@ main {
 #profileDescription{
   font-size: 22px;
 }
+.trending {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  min-width: 100vw;
+  height: 15vh;
+}
