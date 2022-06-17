@@ -1,11 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import { Stock } from './Stock'
 export const StockProfiles = ({symbol}) => {
-
-    // const mySym = (JSON.stringify(selectedValue["1. symbol"] || {}, null, 2))
-    // console.log(typeof(mySym))
-
+  
     const [profile, setProfile] = useState([])
     const [photo, setPhoto] = useState([])
 
@@ -47,12 +44,21 @@ export const StockProfiles = ({symbol}) => {
     return(
         <div className="myParent">
           <div className="myChild">
-            <img src={photo.url} alt=""></img>
-            <h1>CEO: {profile.CEO}</h1>
-            <h2>{profile.city}, {profile.state}</h2>
-            <a href={profile.website}><p>{profile.website}</p></a>
+            <div className="myParent">
+              <div className="myChild">
+              <img src={photo.url} alt=""></img>
+              </div>
+
+              <div className="myChild">
+                <h2>CEO: {profile.CEO}</h2>
+                <h3>{profile.city}, {profile.state}</h3>
+                <a href={profile.website}><p>{profile.website}</p></a>
+              </div>
+            </div>
+           
+           
             <br></br>
-            <h2>Industries: </h2>
+            {/* <h2>Industries: </h2>
               
               <ul className="industries">
                 {(profile.tags || []).map((tag, key) => {
@@ -62,12 +68,13 @@ export const StockProfiles = ({symbol}) => {
 
                     
                 })}
-              </ul>
+              </ul> */}
           </div>
 
           <div className="myChild">
-            <p>{profile.description}</p>
+            <p id="profileDescription">{profile.description}</p>
           </div>
+          {/* <Stock/> */}
            
 
             

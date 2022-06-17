@@ -82,16 +82,7 @@ export const Dashboard = () => {
               })}
           </div>
         </div>
-        {/* We are using lifting state up to track the stockTicker acrossFrom com1 into com2 */}
-        {/* We are using another useState for the different screens of the right-side of the dashboard */}
-
-        {/* {mode === 'dv' &&<div className="dashboard-right-elements">
-          <div className="api-stocks">
-            <DisplayStock setMode={setMode} setTicker={setTicker}/>
-          </div>
-          <DisplayStocks />
-        </div>}
-        {mode === 'sss' && <SingleStockView ticker={ticker} setMode={setMode} />} */}
+        
         <div className="dashboard-right-elements">
           <div className="api-stocks">
             <DisplayStock />
@@ -106,5 +97,3 @@ export const Dashboard = () => {
     </Layout>
   );
 };
-
-// console.log("test");

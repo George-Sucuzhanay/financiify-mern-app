@@ -3,6 +3,7 @@ import { useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AsyncSelect from 'react-select/async'
 import { StockProfiles } from "./StockProfiles";
+import { Stock } from "./Stock"
 
 export const DisplayStock = () => {
 
@@ -37,20 +38,27 @@ export const DisplayStock = () => {
    return (
     <div>
         <div className="search">
-                <h1>Search Stocks</h1>
-                  <AsyncSelect
-                    cacheOptions
-                    defaultOptions
-                    value={selectedValue}
-                    getOptionLabel={e => e["2. name"] + ' '  +  e["1. symbol"]}
-                    getOptionValue={e => e["2. name"]}
-                    loadOptions={loadOptions}
-                    onInputChange={ handleInputChange}
-                    onChange={handleChange}
-                    />
+          <h1>Search Stocks</h1>
+            <AsyncSelect
+              cacheOptions
+              defaultOptions
+              value={selectedValue}
+              getOptionLabel={e => e["2. name"] + ' '  +  e["1. symbol"]}
+              getOptionValue={e => e["2. name"]}
+              loadOptions={loadOptions}
+              onInputChange={ handleInputChange}
+              onChange={handleChange}
+              />
 
-                    { selectedValue ? <StockProfiles symbol={selectedValue["1. symbol"]}/> : null}
-                        
+              { selectedValue ? 
+              <div>
+                <StockProfiles symbol={selectedValue["1. symbol"]}/> 
+                              {/* <Stock/>    */}
+                </div>
+              
+              
+              : null}
+                  
                       
                      
         </div>
