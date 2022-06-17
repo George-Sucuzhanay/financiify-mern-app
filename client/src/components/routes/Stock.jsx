@@ -119,7 +119,7 @@ export const Stock = () => {
     event.preventDefault();
     if (event.target.name === "yes") {
       setIsConfirmationHidden("none");
-      if (!updated && transactionType == "buy") {
+      if (!updated && transactionType === "buy") {
         setUpdated(true);
         setUpdatedValue(currentStockQuantity + currentValue);
         setUpdatedAssetValue(
@@ -329,16 +329,9 @@ export const Stock = () => {
   };
 
   return (
+    
     <div className="selected-stock-container">
-      <div className="purchasable-stock">
-        <p>Company: {selectedStock.stock_name}</p>
-        <p>Symbol: {selectedStock.stock_symbol}</p>
-        <p>Amount Held: {selectedStock.quantity}</p>
-        <p>Market Price: {selectedStock.stock_price}</p>
-        <p>Asset Total: ${selectedStock.totalCashValue}</p>
-      </div>
-
-      <button
+       <button
         className="return-button"
         onClick={(e) => {
           e.preventDefault();
@@ -346,7 +339,16 @@ export const Stock = () => {
         }}
       >
         Return to Previous Page
-      </button>
+      </button> 
+       <div className="purchasable-stock">
+        <p>Company: {selectedStock.stock_name}</p>
+        <p>Symbol: {selectedStock.stock_symbol}</p>
+        <p>Amount Held: {selectedStock.quantity}</p>
+        <p>Market Price: {selectedStock.stock_price}</p>
+        <p>Asset Total: ${selectedStock.totalCashValue}</p>
+      </div>
+
+
 
       <div className="selected-stock-info">
         <div className="stock-buttons">

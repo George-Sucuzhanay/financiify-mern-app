@@ -116,7 +116,7 @@ main {
   align-items: center;
   gap: 20px;
   min-height: 90vh;
-  width: 45%;
+  width: 40%;
   padding: 10px;
 }
 
@@ -194,7 +194,7 @@ main {
   contain: content;
   min-height: 86vh;
   max-height: 86vh;
-  width: 54%;
+  width: 58%;
   padding-top: 10px;
   border-radius: 10px;
   background-color: #edf2fb;
@@ -209,7 +209,7 @@ main {
   gap: 25px;
   padding-left: 2%;
   min-height: 15vh;
-  width: 44vw;
+  width: 53vw;
   border: solid black 0.1vw;
   border-radius: 10px;
   background-color: white;
@@ -238,7 +238,7 @@ main {
   justify-content: space-evenly;
   align-items: center;
   gap: 10px;
-  min-height: 40vh;
+  min-height: 34vh;
   width: 21vw;
   margin: 10px;
   border: solid black 0.1vw;
@@ -305,8 +305,8 @@ main {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  min-height: 50vh;
-  width: 90%;
+  max-height: 49vh;
+  width: 94%;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
@@ -397,7 +397,7 @@ main {
   justify-content: space-evenly;
   align-items: center;
   min-height: 10vh;
-  width: 50%;
+  width: 84%;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
@@ -422,7 +422,7 @@ main {
 }
 
 .stock-buttons button {
-  height: 5vh;
+  height: 8vh;
   width: 10vw;
   border-radius: 50px;
   /* background-color: #edf2fb; */
@@ -447,7 +447,7 @@ main {
   flex-wrap: wrap;
   align-items: center;
   gap: 1vh;
-  height: 30vh;
+  height: 41vh;
   width: 40vw;
   border: solid purple;
   background-color: white;
@@ -567,4 +567,7 @@ main {
 }
 #portfolioImage{
   width: 100%;
+}
+#profileDescription{
+  font-size: 22px;
 }
