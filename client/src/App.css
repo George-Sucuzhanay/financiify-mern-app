@@ -131,6 +131,20 @@ main {
   border: solid white 0.1vw;
   background-color: #edf2fb;
   color: black;
+} 
+
+.overview-values {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 42vh;
+  width: 100%;
+  border-radius: 10px;
+  border: solid white 0.1vw;
+  background-color: #edf2fb;
+  color: black;
 }
 
 .latest-transactions {
