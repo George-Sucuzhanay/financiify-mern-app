@@ -10,8 +10,6 @@ export const Dashboard = () => {
   const [currentTransactionData, setCurrentTransactionData] = useState([]);
   const [currentAccountValue, setCurrentAccountValue] = useState(1000000);
   const [currentBuyingPower, setCurrentBuyingPower] = useState(1000000);
-  // const [mode, setMode] = useState('dv')
-  // const [ticker, setTicker] = useState("");
 
   const fetchAllStocks = async () => {
     const response = await axios({
