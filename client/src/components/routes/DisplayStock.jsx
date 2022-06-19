@@ -6,16 +6,12 @@ import { StockProfiles } from "./StockProfiles";
 import { Stock } from "./Stock"
 
 export const DisplayStock = () => {
-
-
-  const [inputValue, setValue] = useState(" ")
+  const [inputValue, setValue] = useState(null)
   const [selectedValue, setSelectedValue] = useState("")
 
-
-
   const handleInputChange = value => {
+    // setTimeout(5000) work on making a timeout for the stock ticker so that it wait some time before making api call
     setValue(value)
-
   }
 
   const handleChange = value => {
@@ -26,10 +22,9 @@ export const DisplayStock = () => {
     return axios.get(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${inputValue}&apikey=${process.env.REACT_APP_ALFA_TOKEN}`)
     // .then(setTimeout(() => {
     //   console.log("Delayed for 1 second.");
-    // }, "1000"))  
+    // }, "6000"))  
     
     .then((tickers) => {
-        // setTest(res.data.bestMatches)
         const res = tickers.data.bestMatches
         return res
     })
@@ -43,27 +38,15 @@ export const DisplayStock = () => {
               cacheOptions
               defaultOptions
               value={selectedValue}
-              getOptionLabel={e => e["2. name"] + ' '  +  e["1. symbol"]}
+              getOptionLabel={e => e["1. symbol"] + '      '  +  e["2. name"]}
               getOptionValue={e => e["2. name"]}
               loadOptions={loadOptions}
               onInputChange={ handleInputChange}
               onChange={handleChange}
               />
 
-              { selectedValue ? 
-              <div>
-                <StockProfiles symbol={selectedValue["1. symbol"]}/> 
-                              {/* <Stock/>    */}
-                </div>
-              
-              
-              : null}
-                  
-                      
-                     
-        </div>
-        
-                 
+              { selectedValue ? <StockProfiles symbol={selectedValue["1. symbol"]}/>  : null}
+        </div>            
     </div>
   );
 };

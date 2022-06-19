@@ -43,7 +43,7 @@ footer {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  min-height: 10vh;
+  min-height: 8vh;
   max-height: 10vh;
   width: 100vw;
   border: solid --textColor 0.1vw;
@@ -88,6 +88,7 @@ main {
 }
 .home-middle-container {
   background-color: var(--pastelYellow);
+  text-align: center;
 }
 .home-bottom-container {
   background-color: var(--pastelPink);
@@ -103,7 +104,6 @@ main {
   min-height: 100vh;
   width: 100%;
   background-color: var(--darkBlue);
-  color: white;
   font-family: "Roberto ", sans-serif;
   font-weight: 400;
   font-size: 2em;
@@ -125,10 +125,9 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  min-height: 42vh;
+  max-height: 40vh;
   width: 100%;
   border-radius: 10px;
-  border: solid white 0.1vw;
   background-color: #edf2fb;
   color: black;
 } 
@@ -138,8 +137,9 @@ main {
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  min-height: 42vh;
+  align-items: left;
+  text-align: left;
+  min-height: 30vh;
   width: 100%;
   border-radius: 10px;
   border: solid white 0.1vw;
@@ -155,7 +155,7 @@ main {
   align-items: center;
   gap: 1vh;
   padding-bottom: 1vh;
-  min-height: 42vh;
+  min-height: 52vh;
   max-height: 42vh;
   width: 100%;
   border: solid white 0.1vw;
@@ -176,11 +176,11 @@ main {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  max-height: 7vh;
+  max-height: 6vh;
   width: 95%;
-  border: solid black 0.1vw;
-  border-radius: 10px;
+  border-radius: 9px;
   background-color: white;
+  
 }
 
 .transaction-column {
@@ -188,7 +188,7 @@ main {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  height: 7vh;
+  height: 9vh;
   width: 20%;
   font-size: 1rem;
 }
@@ -223,10 +223,8 @@ main {
   gap: 25px;
   padding-left: 2%;
   min-height: 15vh;
-  width: 53vw;
-  border: solid black 0.1vw;
+  width: 56vw;
   border-radius: 10px;
-  background-color: white;
   color: black;
 }
 
@@ -526,13 +524,14 @@ main {
   justify-content: center;
   align-items: center;
   margin: 18px;
-  height: 9vh;
+  height: 8vh;
   max-width: 14.5vw;
-  min-width: 14.5vw;
+  min-width: 13.5vw;
   font-size: 1.5rem;
   border-radius: 10px;
   background-color: #edf2fb;
   contain: content;
+  animation: slide 5s linear infinite;
 }
 
 .mytrendsdata {
@@ -591,4 +590,69 @@ main {
   align-items: center;
   min-width: 100vw;
   height: 15vh;
+  overflow: hidden;
+}
+.row {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction:row;
+  height: 400px;
+  padding: 106px;
+  gap: 15px;
+}
+.column {
+  flex: 1 1 0px;
+  border: 1px solid black;
+  text-align: center;
+}
+.profileInfo{
+  text-align: left;
+  font-size: 30px;
+}
+.profileInfoParent{
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+#stockImage {
+  border-radius: 100px;
+  width: 70%;
+}
+.overview-values p, h1{
+  text-align: left;
+}
+.overview-values p{
+  font-size: .999rem!important;
+  letter-spacing: .1666666667em!important;
+}
+.left-align {
+  text-align: left;
+}
+.left-align h3{
+  font-size: 23px;
+}
+#stockImage2{
+  border-radius: 100px;
+  width: 4%;
+}
+.container {
+  columns: 2 auto;
+}
+.subheadingTransaction{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-height: 2vh;
+  width: 95%;
+  border-radius: 10px;
+}
+@keyframes slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-1500px, 0, 0); /* The image width */
+  }
 }

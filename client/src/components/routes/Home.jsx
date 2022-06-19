@@ -17,19 +17,19 @@ export const Home = () => {
           </div>
           
         </div>
-        <div className="home-middle-container myParent">
+        <div className="home-middle-container">
           <h1>Learning the Fundamentals of Stock Trading</h1>
-          <div className="row">
-            <div className="column">
-
+            <div className="row">
+              <div className="column">
+                <h1>Idea 1</h1>
+              </div>
+              <div className="column">
+                <h1>Idea 1</h1>
+              </div>
+              <div className="column">
+                <h1>Idea 1</h1>
+              </div>
             </div>
-            <div className="column">
-
-            </div>
-            <div className="column">
-
-            </div>
-          </div>
         </div>
         <div className="home-bottom-container myParent">
           <h1>Home</h1>

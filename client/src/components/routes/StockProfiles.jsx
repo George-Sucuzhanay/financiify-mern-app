@@ -1,15 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Stock } from './Stock'
+import { StockPurchase } from "./StockPurchase";
 export const StockProfiles = ({symbol}) => {
-  
-    const [profile, setProfile] = useState([])
+
+    const [company, setCompany] = useState([])
     const [photo, setPhoto] = useState([])
+    const [quote, setQuote] = useState([])
+    // const [news, setNews] = useState([])
 
     useEffect(() => {
       if(symbol) {
         fetchProfile()
-        fetchPhoto()
       }
     }, [])
    
@@ -17,71 +18,90 @@ export const StockProfiles = ({symbol}) => {
     const fetchProfile = async () => {
           try {
             const stockProfile = await axios
-              .get(
-                `https://cloud.iexapis.com/stable/stock/${symbol.toLowerCase()}/company?&token=${process.env.REACT_APP_IEXCLOUD_TOKEN}`
-              )
+              .get(`https://cloud.iexapis.com/stable/stock/${symbol.toLowerCase()}/batch?types=quote,company,logo,news&range=1m&last=5&token=${process.env.REACT_APP_IEXCLOUD_TOKEN}`)
               .then(stockProfile => {
-                setProfile(stockProfile.data)
+                setCompany(stockProfile.data.company)
+                setPhoto(stockProfile.data.logo)
+                setQuote(stockProfile.data.quote)
+                // setNews(stockProfile.data.news)
               });
           } catch (error) {
             console.log(error)
           }
     };
 
-    const fetchPhoto = async () => {
-      try {
-        const stockPicture = await axios
-          .get(`https://cloud.iexapis.com/stable/stock/${symbol.toLowerCase()}/logo?&token=${process.env.REACT_APP_IEXCLOUD_TOKEN}`)
-          .then(stockPicture => {
-            setPhoto(stockPicture.data)
-          })
-      }
-      catch(error){
-        console.log(error)
-      }
-    }
-
     return(
-        <div className="myParent">
-          <div className="myChild">
-            <div className="myParent">
-              <div className="myChild">
-              <img src={photo.url} alt=""></img>
+        <div className="">
+              <div className="profileInfoParent">
+                <div className="profileInfo">
+                  <img id="stockImage"src={photo.url} alt=""></img>
+                </div>
+                <div className="profileInfo">
+                  <h1>{company.symbol}</h1>
+                  <h4>{company.companyName} <img id="stockImage2"src="https://s3-symbol-logo.tradingview.com/country/US.svg" alt=""></img> {company.exchange}</h4>
+                  {/* <h4>CEO: {company.CEO}</h4>
+                  <h4>{company.city}, {company.state}</h4>
+                  <a href={company.website}><p>{company.website}</p></a> */}
+                </div>
               </div>
 
-              <div className="myChild">
-                <h2>CEO: {profile.CEO}</h2>
-                <h3>{profile.city}, {profile.state}</h3>
-                <a href={profile.website}><p>{profile.website}</p></a>
+            <div>
+              <h1>{quote.latestPrice} {quote.currency} +-{quote.change} ({quote.changePercent}%)</h1>
+            </div>
+            <div className="myParent">
+              <div className="myChild left-align">
+                <h3>Volume</h3>
+                <h3>Day's High ($)</h3>
+                <h3>Day's Low ($)</h3>
+              </div>
+              <div className="myChild left-align">
+                <h3>{quote.volume}</h3>
+                <h3>{quote.high}</h3>
+                <h3>{quote.low}</h3>
+              </div>
+              <div className="myChild left-align">
+                <h3>Market Cap</h3>
+                <h3>52 Week High ($)</h3>
+                <h3>52 Week Low ($)</h3>
+              </div>
+              <div className="myChild left-align">
+                <h3>{quote.marketCap}</h3>
+                <h3>{quote.week52High}</h3>
+                <h3>{quote.week52Low}</h3>
               </div>
             </div>
-           
-           
             <br></br>
-            {/* <h2>Industries: </h2>
-              
-              <ul className="industries">
-                {(profile.tags || []).map((tag, key) => {
-                  return (
-                    <li key={key}>{tag}</li>
-                  )
+                {/* <h2>Industries: </h2>
+                  
+                  <ul className="industries">
+                    {(profile.tags || []).map((tag, key) => {
+                      return (
+                        <li key={key}>{tag}</li>
+                      )
+                    })}
+                  </ul> */}
 
-                    
-                })}
-              </ul> */}
-          </div>
 
-          <div className="myChild">
-            <p id="profileDescription">{profile.description}</p>
-          </div>
-          {/* <Stock/> */}
-           
+                  {/* <h2>Industries: </h2>
+                  
+                  <ul className="industries">
+                    {(news || []).map((tag, key) => {
+                      return (
+                        <div>
+                          <h3 key={key}>{tag.headline}</h3>
+                          <h5 key={key}>{tag.summary}</h5>
 
-            
+                        </div>
+                      )   
+                    })}
+                  </ul> */}
+          
 
-  
-        
-
+          {/* <div className="myChild">
+            <p id="profileDescription">{company.description}</p>
+          </div> */}
+          <StockPurchase symbol={quote.symbol} price={quote.delayedPrice} />
+ 
         </div>
     )
 }
