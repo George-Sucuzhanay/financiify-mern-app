@@ -55,11 +55,14 @@ export const Dashboard = () => {
     <Layout>
       <div className="dashboard-container">
         <div className="dashboard-left-elements">
-          <div className="overview">
-            <div className="overview-values">
-              <p>Overview</p>
-              <p>Account Value: ${currentAccountValue}</p>
+          <div className="overview myParent">
+            <div className="myChild overview-values">
+            <p>Overview</p>
+    <p>Account Value: ${currentAccountValue}</p>
               <p>Buying Power: ${currentBuyingPower}</p>
+            </div>
+            <div className="myChild">
+              <img id="portfolioImage"src={portfolioImage} alt=""></img>
             </div>
           </div>
 
