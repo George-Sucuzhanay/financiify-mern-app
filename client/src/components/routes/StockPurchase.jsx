@@ -4,7 +4,7 @@ import { Form } from "./Form";
 
 
 export const StockPurchase = ({symbol, price}) => {
-    const [quantity, setQuantity] = useState(0)
+    const [quantity, setQuantity] = useState(1)
    
     const createTransacationsData = async (action) => {
         const data = {
