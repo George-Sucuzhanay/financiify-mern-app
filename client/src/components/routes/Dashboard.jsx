@@ -78,7 +78,7 @@ export const Dashboard = () => {
         
               </div>
               <div className="transaction-column">
-                <p>Action</p>
+                <p>Trade Type</p>
 
               </div>
               <div className="transaction-column">
@@ -108,7 +108,7 @@ export const Dashboard = () => {
                       <p>{data.qty}</p>
                     </div>
                     <div className="transaction-column">
-                      <p>${data.price}</p>
+                      <p>${parseFloat(data.price).toFixed(2)}</p>
                     </div>
                     <div className="transaction-column">
                       <p>${parseFloat(data.total).toFixed(2)}</p>

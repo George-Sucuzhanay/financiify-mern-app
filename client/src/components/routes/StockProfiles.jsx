@@ -37,8 +37,8 @@ export const StockProfiles = ({symbol}) => {
                   <img id="stockImage"src={photo.url} alt=""></img>
                 </div>
                 <div className="profileInfo">
-                  <h1>{company.symbol}</h1>
-                  <h4>{company.companyName} <img id="stockImage2"src="https://s3-symbol-logo.tradingview.com/country/US.svg" alt=""></img> {company.exchange}</h4>
+                  <h1>{company.companyName}</h1>
+                  <h4 id="stockTickerAndExchange">{company.symbol} <img id="stockImage2"src="https://s3-symbol-logo.tradingview.com/country/US.svg" alt=""></img> {company.exchange}</h4>
                   {/* <h4>CEO: {company.CEO}</h4>
                   <h4>{company.city}, {company.state}</h4>
                   <a href={company.website}><p>{company.website}</p></a> */}
@@ -46,13 +46,13 @@ export const StockProfiles = ({symbol}) => {
               </div>
 
             <div>
-              <h1>{quote.latestPrice} {quote.currency} +-{quote.change} ({quote.changePercent}%)</h1>
+              <h1><span style={{fontWeight: '900', fontSize: '50px'}}>{quote.latestPrice}</span> <span style={{fontSize: '25px'}}>{quote.currency} +-{quote.change} ({quote.changePercent}%)</span></h1>
             </div>
             <div className="myParent">
               <div className="myChild left-align">
-                <h3>Volume</h3>
+                <h3 id="upper-left">Volume</h3>
                 <h3>Day's High ($)</h3>
-                <h3>Day's Low ($)</h3>
+                <h3 id="lower-left">Day's Low ($)</h3>
               </div>
               <div className="myChild left-align">
                 <h3>{quote.volume}</h3>
@@ -65,9 +65,9 @@ export const StockProfiles = ({symbol}) => {
                 <h3>52 Week Low ($)</h3>
               </div>
               <div className="myChild left-align">
-                <h3>{quote.marketCap}</h3>
+                <h3 id="upper-right">{quote.marketCap}</h3>
                 <h3>{quote.week52High}</h3>
-                <h3>{quote.week52Low}</h3>
+                <h3 id="lower-right">{quote.week52Low}</h3>
               </div>
             </div>
             <br></br>
@@ -100,7 +100,7 @@ export const StockProfiles = ({symbol}) => {
           {/* <div className="myChild">
             <p id="profileDescription">{company.description}</p>
           </div> */}
-          <StockPurchase symbol={quote.symbol} price={quote.delayedPrice} />
+          <StockPurchase symbol={quote.symbol} price={quote.latestPrice} />
  
         </div>
     )
