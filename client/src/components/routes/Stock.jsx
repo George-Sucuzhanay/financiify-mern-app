@@ -330,7 +330,7 @@ export const Stock = () => {
   return (
     
     <div className="selected-stock-container">
-       <button
+       {/* <button
         className="return-button"
         onClick={(e) => {
           e.preventDefault();
@@ -345,7 +345,7 @@ export const Stock = () => {
         <p>Amount Held: {selectedStock.quantity}</p>
         <p>Market Price: {selectedStock.stock_price}</p>
         <p>Asset Total: ${selectedStock.totalCashValue}</p>
-      </div>
+      </div> */}
 
 
 
