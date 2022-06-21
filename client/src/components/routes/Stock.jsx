@@ -8,6 +8,7 @@ export const Stock = () => {
   const [selectedStock, setSelectedStock] = useState({}); // use selectedStock to render company info
   const [isRendered, setIsRendered] = useState(false);
   const [updated, setUpdated] = useState(false);
+  // eslint-disable-next-line
   const [deleted, setDeleted] = useState(false);
   const [transactionType, setTransactionType] = useState("buy");
   const [currentValue, setCurrentValue] = useState(1);
@@ -62,7 +63,7 @@ export const Stock = () => {
     setCurrentStockQuantity(response.data.stock.quantity);
     setCurrentAssetTotal(response.data.stock.totalCashValue);
     setCurrentTotalPrice(selectedStock.stock_price);
-    // make useState for stockSymbol to render
+
     if (selectedStock.quantity === 0) {
       destroy();
       return navigate("/dashboard");
@@ -338,14 +339,7 @@ export const Stock = () => {
         }}
       >
         Return to Previous Page
-      </button> 
-       <div className="purchasable-stock">
-        <p>Company: {selectedStock.stock_name}</p>
-        <p>Symbol: {selectedStock.stock_symbol}</p>
-        <p>Amount Held: {selectedStock.quantity}</p>
-        <p>Market Price: {selectedStock.stock_price}</p>
-        <p>Asset Total: ${selectedStock.totalCashValue}</p>
-      </div> */}
+      </button> */}
 
 
 

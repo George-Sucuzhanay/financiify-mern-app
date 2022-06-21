@@ -12,11 +12,12 @@ export const StockProfiles = ({symbol}) => {
       if(symbol) {
         fetchProfile()
       }
-    }, [])
+    }, [symbol])
    
    
     const fetchProfile = async () => {
           try {
+            // eslint-disable-next-line
             const stockProfile = await axios
               .get(`https://cloud.iexapis.com/stable/stock/${symbol.toLowerCase()}/batch?types=quote,company,logo,news&range=1m&last=5&token=${process.env.REACT_APP_IEXCLOUD_TOKEN}`)
               .then(stockProfile => {

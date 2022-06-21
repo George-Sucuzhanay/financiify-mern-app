@@ -12,6 +12,7 @@ export const MarketNews = () => {
 
     const fetchProfile = async () => {
         try {
+          // eslint-disable-next-line
           const marketNews = await axios
             .get(`https://finnhub.io/api/v1/news?category=general&token=${process.env.REACT_APP_FINN_HUB}`)
             .then(marketNews=> {

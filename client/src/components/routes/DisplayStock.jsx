@@ -3,7 +3,6 @@ import { useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AsyncSelect from 'react-select/async'
 import { StockProfiles } from "./StockProfiles";
-import { Stock } from "./Stock"
 
 export const DisplayStock = () => {
   const [inputValue, setValue] = useState(null)

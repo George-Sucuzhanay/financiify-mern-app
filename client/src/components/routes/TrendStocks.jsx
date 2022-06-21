@@ -4,17 +4,16 @@ import { Col } from "react-bootstrap";
 
 export const TrendStocks = () => {
   const [trends, setTrends] = useState([]);
-  const [color, setColor] = useState("");
 
   const fetchData = async () => {
     try {
+      // eslint-disable-next-line
       const trendingStocks = await axios
         .get(
           `https://cloud.iexapis.com/stable/stock/market/collection/list?collectionName=mostactive&token=${process.env.REACT_APP_IEXCLOUD_TOKEN}`
         )
         .then((trendingStocks) => setTrends(trendingStocks.data));
     } catch (error) {
-      // console.log(error)
     }
   };
 

@@ -5,18 +5,18 @@ import { TrendStocks } from "./TrendStocks";
 import portfolioImage from "../../assets/portfolio.png"
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { MarketNews } from "./MarketNews";
+// import { MarketNews } from "./MarketNews";
 export const Dashboard = () => {
   const [currentTransactionData, setCurrentTransactionData] = useState([]);
   const [currentAccountValue, setCurrentAccountValue] = useState(1000000);
   const [currentBuyingPower, setCurrentBuyingPower] = useState(1000000);
   
   const fetchAllStocks = async () => {
+    // eslint-disable-next-line
     const response = await axios({
       url: `${process.env.REACT_APP_API_URL}/api/stocks`,
       method: "GET",
     });
-    // console.log(response);
   };
 
   useEffect(() => {
@@ -49,6 +49,7 @@ export const Dashboard = () => {
 
   useEffect(() => {
     handleUpdatingOverviewValues();
+    // eslint-disable-next-line
   }, [currentTransactionData]);
 
   return (
