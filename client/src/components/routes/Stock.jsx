@@ -330,7 +330,7 @@ export const Stock = () => {
         }}
       >
         Return to Previous Page
-      </button> */}
+      </button>
 
 
 

@@ -7,11 +7,6 @@ export const StockProfiles = ({ symbol }) => {
   const [quote, setQuote] = useState([]);
   // const [news, setNews] = useState([])
 
-  useEffect(() => {
-    if (symbol) {
-      fetchProfile();
-    }
-  }, []);
 
     useEffect(() => {
       if(symbol) {
