@@ -27,7 +27,7 @@ export const TrendStocks = () => {
 
   return (
     // <h1>Trending Stocks!</h1>
-    <div className="parentDiv">
+    <div className="trending">
       {(trends || []).slice(0, 6).map((trend, index) => {
         if (trend.changePercent < 0) {
           return (
