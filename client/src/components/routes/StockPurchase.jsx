@@ -32,6 +32,26 @@ export const StockPurchase = ({ symbol, price }) => {
 
   return (
     <div className="">
+      {/* <button
+                className="return-button"
+                onClick={(e) => {
+                e.preventDefault();
+                navigate("/dashboard");
+                }}
+                >
+                Return to Previous Page
+              </button>  */}
+      <div className="subheadingTransaction2 ">
+        <div className="transaction-column">
+          <h1>Enter Quantity</h1>
+        </div>
+        <div className="transaction-column">
+          <h1>Stock Price</h1>
+        </div>
+        <div className="transaction-column">
+          <h1>Stock Purchase</h1>
+        </div>
+      </div>
       <Form
         handleSubmit={() => {}}
         currentValue={quantity}
@@ -39,7 +59,7 @@ export const StockPurchase = ({ symbol, price }) => {
         selectedStock={{ stock_price: price }}
         currentTotalPrice={quantity * price}
       />
-      <div className="">
+      <div className="transaction-row2 transaction-corners">
         <div className="stock-buttons">
           <button
             onClick={(e) => handleRenderingClick(e)}

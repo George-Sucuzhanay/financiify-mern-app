@@ -1,6 +1,6 @@
 export const Form = (props) => {
   return (
-    <div className="transaction-values">
+    <div className="transaction-values transaction-row2">
       <form
         onSubmit={(e) => props.handleSubmit(e)}
         className="quantity-container"

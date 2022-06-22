@@ -56,26 +56,27 @@ export const StockProfiles = ({ symbol }) => {
         <p>{company.description}</p>
       </div>
 
-      {/* <div className="myChild left-align main-data-left">
-          <h3>Volume</h3>
-          <h3>Day's High ($)</h3>
-          <h3>Day's Low ($)</h3>
-        </div>
-        <div className="myChild left-align">
-          <h3>{quote.volume}</h3>
-          <h3>{quote.high}</h3>
-          <h3>{quote.low}</h3>
-        </div>
-        <div className="myChild left-align main-data-right">
-          <h3>Market Cap</h3>
-          <h3>52 Week High ($)</h3>
-          <h3>52 Week Low ($)</h3>
-        </div>
-        <div className="myChild left-align">
-          <h3>{quote.marketCap}</h3>
-          <h3>{quote.week52High}</h3>
-          <h3>{quote.week52Low}</h3>
-        </div> */}
+      <div className="myChild left-align">
+        <h3 id="upper-left">Volume</h3>
+        <h3>Day's High ($)</h3>
+        <h3 id="lower-left">Day's Low ($)</h3>
+      </div>
+      <div className="myChild left-align">
+        <h3>{quote.volume}</h3>
+        <h3>{quote.high}</h3>
+        <h3>{quote.low}</h3>
+      </div>
+      <div className="myChild left-align">
+        <h3>Market Cap</h3>
+        <h3>52 Week High ($)</h3>
+        <h3>52 Week Low ($)</h3>
+      </div>
+      <div className="myChild left-align">
+        <h3 id="upper-right">{quote.marketCap}</h3>
+        <h3>{quote.week52High}</h3>
+        <h3 id="lower-right">{quote.week52Low}</h3>
+      </div>
+
       {/* <br></br> */}
       {/* <h2>Industries: </h2>
                   
@@ -104,7 +105,7 @@ export const StockProfiles = ({ symbol }) => {
       {/* <div className="myChild">
             <p id="profileDescription">{company.description}</p>
           </div> */}
-      {/* <StockPurchase symbol={quote.symbol} price={quote.delayedPrice} /> */}
+      <StockPurchase symbol={quote.symbol} price={quote.latestPrice} />
     </div>
   );
 };
