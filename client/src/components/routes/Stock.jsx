@@ -265,18 +265,10 @@ export const Stock = () => {
     }
     fetchSingleStock();
   }, [currentStockQuantity, currentObjectData, id, updated, updatedValue]);
-  
+
   const HandleRendering = () => {
     if (!isRendered) {
-      
-
-      return (
-        <div className="stock-info">
-          <StockProfiles symbol={selectedStock.stock_symbol}/>
-
-
-        </div>
-      );
+      return <StockProfiles symbol={selectedStock.stock_symbol} />;
     } else {
       return (
         <div className="transaction-options">
@@ -328,9 +320,8 @@ export const Stock = () => {
   };
 
   return (
-    
     <div className="selected-stock-container">
-       {/* <button
+      <button
         className="return-button"
         onClick={(e) => {
           e.preventDefault();
@@ -338,16 +329,14 @@ export const Stock = () => {
         }}
       >
         Return to Previous Page
-      </button> 
-       <div className="purchasable-stock">
+      </button>
+      <div className="purchasable-stock">
         <p>Company: {selectedStock.stock_name}</p>
         <p>Symbol: {selectedStock.stock_symbol}</p>
         <p>Amount Held: {selectedStock.quantity}</p>
         <p>Market Price: {selectedStock.stock_price}</p>
         <p>Asset Total: ${selectedStock.totalCashValue}</p>
-      </div> */}
-
-
+      </div>
 
       <div className="selected-stock-info">
         <div className="stock-buttons">
