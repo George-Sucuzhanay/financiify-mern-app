@@ -1,24 +1,35 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Form } from "./Form";
 
-export const StockPurchase = ({ symbol, price }) => {
-  const [quantity, setQuantity] = useState(1);
 
-  const createTransacationsData = async (action) => {
-    const data = {
-      symbol,
-      action,
-      price,
-      qty: quantity,
-      total: quantity * price,
+export const StockPurchase = ({symbol, price}) => {
+    const [quantity, setQuantity] = useState(1)
+   
+    const createTransacationsData = async (action) => {
+        const data = {
+            symbol,
+            action,
+            price,
+            qty: quantity,
+            total: quantity * price
+        }
+        await axios({
+            url: `${process.env.REACT_APP_API_TRANSACTIONS}`,
+            method: "POST",
+            data: data,
+        });
     };
-    await axios({
-      url: `${process.env.REACT_APP_API_TRANSACTIONS}`,
-      method: "POST",
-      data: data,
-    });
-  };
+ 
+    const handleRenderingClick = (event) => {
+        if (event.target.name === "buy") {
+            createTransacationsData("buy");
+        } else if (event.target.name === "sell") {
+            createTransacationsData("sell");
+        } else if (event.target.name === "cancel") {
+            setQuantity(0)
+        }
+    };  
 
     return(
         <div className=''>

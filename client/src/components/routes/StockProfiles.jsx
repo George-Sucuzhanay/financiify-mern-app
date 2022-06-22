@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { StockPurchase } from "./StockPurchase";
-export const StockProfiles = ({ symbol }) => {
-  const [company, setCompany] = useState([]);
-  const [photo, setPhoto] = useState([]);
-  const [quote, setQuote] = useState([]);
-  // const [news, setNews] = useState([])
+export const StockProfiles = ({symbol}) => {
 
+    const [company, setCompany] = useState([])
+    const [photo, setPhoto] = useState([])
+    const [quote, setQuote] = useState([])
+    // const [news, setNews] = useState([])
 
     useEffect(() => {
       if(symbol) {
@@ -17,7 +17,6 @@ export const StockProfiles = ({ symbol }) => {
    
     const fetchProfile = async () => {
           try {
-            // eslint-disable-next-line
             const stockProfile = await axios
               .get(`https://cloud.iexapis.com/stable/stock/${symbol.toLowerCase()}/batch?types=quote,company,logo,news&range=1m&last=5&token=${process.env.REACT_APP_IEXCLOUD_TOKEN}`)
               .then(stockProfile => {
@@ -82,7 +81,8 @@ export const StockProfiles = ({ symbol }) => {
                     })}
                   </ul> */}
 
-      {/* <h2>Industries: </h2>
+
+                  {/* <h2>Industries: </h2>
                   
                   <ul className="industries">
                     {(news || []).map((tag, key) => {
@@ -95,8 +95,9 @@ export const StockProfiles = ({ symbol }) => {
                       )   
                     })}
                   </ul> */}
+          
 
-      {/* <div className="myChild">
+          {/* <div className="myChild">
             <p id="profileDescription">{company.description}</p>
           </div> */}
           <StockPurchase symbol={quote.symbol} price={quote.latestPrice} />
