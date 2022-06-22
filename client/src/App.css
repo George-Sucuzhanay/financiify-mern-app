@@ -41,7 +41,7 @@ header,
 footer {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   min-height: 8vh;
   max-height: 10vh;
@@ -518,6 +518,9 @@ main {
   align-items: stretch;
 }
 
+#navbar-logo{
+  width: 11%;
+}
 .parentDiv {
   display: flex;
   flex-direction: row;
