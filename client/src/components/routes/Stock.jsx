@@ -266,18 +266,10 @@ export const Stock = () => {
     }
     fetchSingleStock();
   }, [currentStockQuantity, currentObjectData, id, updated, updatedValue]);
-  
+
   const HandleRendering = () => {
     if (!isRendered) {
-      
-
-      return (
-        <div className="stock-info">
-          <StockProfiles symbol={selectedStock.stock_symbol}/>
-
-
-        </div>
-      );
+      return <StockProfiles symbol={selectedStock.stock_symbol} />;
     } else {
       return (
         <div className="transaction-options">
@@ -329,9 +321,8 @@ export const Stock = () => {
   };
 
   return (
-    
     <div className="selected-stock-container">
-       {/* <button
+      <button
         className="return-button"
         onClick={(e) => {
           e.preventDefault();

@@ -24,7 +24,6 @@ export const TrendStocks = () => {
 
   return (
     <div className="trending">
-
       {(trends || []).slice(0, 13).map((trend, index) => {
         if (trend.changePercent < 0) {
           return (

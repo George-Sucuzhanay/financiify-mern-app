@@ -2,7 +2,7 @@ import { Layout } from "../shared/Layout";
 import { DisplayStock } from "./DisplayStock";
 import { DisplayStocks } from "./DisplayStocks";
 import { TrendStocks } from "./TrendStocks";
-import portfolioImage from "../../assets/portfolio.png"
+import portfolioImage from "../../assets/portfolio.png";
 import axios from "axios";
 import { useState, useEffect } from "react";
 // import { MarketNews } from "./MarketNews";
@@ -10,7 +10,7 @@ export const Dashboard = () => {
   const [currentTransactionData, setCurrentTransactionData] = useState([]);
   const [currentAccountValue, setCurrentAccountValue] = useState(1000000);
   const [currentBuyingPower, setCurrentBuyingPower] = useState(1000000);
-  
+
   const fetchAllStocks = async () => {
     // eslint-disable-next-line
     const response = await axios({
@@ -55,9 +55,6 @@ export const Dashboard = () => {
   return (
     <Layout>
       <div className="dashboard-container">
-      <div className="trending-stocks">
-          <TrendStocks />
-        </div>
         <div className="dashboard-left-elements">
           <div className="overview myParent">
             <div className="myChild overview-values">
@@ -67,7 +64,7 @@ export const Dashboard = () => {
               <h1>${currentBuyingPower}</h1>
             </div>
             <div className="myChild">
-              <img id="portfolioImage"src={portfolioImage} alt=""></img>
+              <img id="portfolioImage" src={portfolioImage} alt=""></img>
             </div>
           </div>
 
@@ -76,7 +73,6 @@ export const Dashboard = () => {
             <div className="subheadingTransaction">
               <div className="transaction-column">
                 <p>Symbol</p>
-        
               </div>
               <div className="transaction-column">
                 <p>Trade Type</p>
@@ -119,17 +115,17 @@ export const Dashboard = () => {
               })}
           </div>
         </div>
-        
+
         <div className="dashboard-right-elements">
           <div className="api-stocks">
             <DisplayStock />
-            
           </div>
           <DisplayStocks />
           {/* <MarketNews/> */}
         </div>
-
-        
+        <div className="trending-stocks">
+          <TrendStocks />
+        </div>
       </div>
     </Layout>
   );
