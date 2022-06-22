@@ -74,7 +74,6 @@ main {
 }
 
 .home-container * {
- 
   width: 100%;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
@@ -84,7 +83,6 @@ main {
 .home-top-container {
   background-color: var(--pastelBlue);
   height: 90vh;
-  
 }
 .home-middle-container {
   background-color: var(--pastelYellow);
@@ -100,9 +98,9 @@ main {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  min-height: 100vh;
-  width: 100%;
+  /* gap: 10px; */
+  /* min-height: 100vh; */
+  /* width: 100%; */
   background-color: var(--darkBlue);
   font-family: "Roberto ", sans-serif;
   font-weight: 400;
@@ -130,7 +128,7 @@ main {
   border-radius: 10px;
   background-color: #edf2fb;
   color: black;
-} 
+}
 
 .overview-values {
   display: flex;
@@ -142,7 +140,6 @@ main {
   min-height: 30vh;
   width: 100%;
   border-radius: 10px;
-  border: solid white 0.1vw;
   background-color: #edf2fb;
   color: black;
 }
@@ -178,9 +175,9 @@ main {
   align-items: center;
   max-height: 6vh;
   width: 95%;
+  border: solid black 0.1vw;
   border-radius: 9px;
   background-color: white;
-  
 }
 
 .transaction-column {
@@ -206,8 +203,8 @@ main {
   align-items: center;
   gap: 25px;
   contain: content;
-  min-height: 88vh;
-  max-height: 88vh;
+  min-height: 86vh;
+  max-height: 86vh;
   width: 58%;
   padding-top: 10px;
   border-radius: 10px;
@@ -296,7 +293,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   min-height: 100vh;
   width: 100%;
   font-family: "Poppins", sans-serif;
@@ -312,27 +309,33 @@ main {
   border-radius: 10px;
 }
 
+.selected-stock-container .purchasable-stock {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+  min-height: 10vh;
+  width: 30vw;
+  margin: 10px;
+  border: solid black 0.2vw;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+}
+
 .selected-stock-info {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  gap: 2vh;
   align-items: center;
-  max-height: 49vh;
+  min-height: 65vh;
+  max-height: 65vh;
   width: 94%;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
-}
-
-.stock-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  min-height: 35vh;
-  width: 70vw;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-size: 1.5em;
 }
 
 .transaction-options {
@@ -341,7 +344,7 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  height: 35vh;
+  height: 315vh;
   width: 70vw;
   contain: content;
 }
@@ -393,7 +396,7 @@ main {
   align-items: center;
   width: 14vw;
   border: solid black 0.2vw;
-  border-radius: 50px;
+  border-radius: 10px;
   background-color: white;
 }
 
@@ -408,10 +411,12 @@ main {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  min-height: 10vh;
+  margin-top: 2vh;
+  min-height: 7vh;
   width: 84%;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
+  /* background-color: blue; */
 }
 
 .buy:hover {
@@ -436,7 +441,7 @@ main {
 .stock-buttons button {
   height: 8vh;
   width: 10vw;
-  border-radius: 50px;
+  border-radius: 10px;
   /* background-color: #edf2fb; */
   cursor: pointer;
 }
@@ -446,10 +451,11 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-  height: 10vh;
+  margin-bottom: 1vw;
+  height: 8vh;
   width: 100%;
-  /* border: solid white 0.1vw; */
+  /* border: solid orange 0.4vh; */
+  background-color: #003049;
   color: black;
 }
 
@@ -531,7 +537,7 @@ main {
   border-radius: 10px;
   background-color: #edf2fb;
   contain: content;
-  animation: slide 5s linear infinite;
+  animation: slide 15s linear infinite;
 }
 
 .mytrendsdata {
@@ -549,7 +555,6 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
-  
 }
 .myChild {
   flex: 1;
@@ -563,25 +568,24 @@ main {
 }
 .myChild2 {
   margin: 10px;
-  
 }
-#hero{
+#hero {
   width: 69%;
   margin: 70px;
   text-align: center;
 }
-.heroText{
+.heroText {
   text-align: left;
   margin-left: 20px;
   padding: 90px;
 }
-#herotext2{
-  color: #6361FA;
+#herotext2 {
+  color: #6361fa;
 }
-#portfolioImage{
+#portfolioImage {
   width: 100%;
 }
-#profileDescription{
+#profileDescription {
   font-size: 22px;
 }
 .trending {
@@ -596,7 +600,7 @@ main {
   display: flex;
   align-items: center;
   align-content: center;
-  flex-direction:row;
+  flex-direction: row;
   height: 400px;
   padding: 106px;
   gap: 15px;
@@ -606,40 +610,35 @@ main {
   border: 1px solid black;
   text-align: center;
 }
-.profileInfo{
+.profileInfo {
   text-align: left;
   font-size: 30px;
 }
-.profileInfoParent{
+.profileInfoParent {
   display: flex;
   align-items: center;
   text-align: center;
 }
-#stockImage {
-  border-radius: 100px;
-  width: 70%;
-}
-.overview-values p, h1{
+
+.overview-values p,
+h1 {
   text-align: left;
 }
-.overview-values p{
-  font-size: .999rem!important;
-  letter-spacing: .1666666667em!important;
+.overview-values p {
+  font-size: 0.999rem !important;
+  letter-spacing: 0.1666666667em !important;
 }
 .left-align {
   text-align: left;
 }
-.left-align h3{
+.left-align h3 {
   font-size: 23px;
 }
-#stockImage2{
-  border-radius: 100px;
-  width: 4%;
-}
+
 .container {
   columns: 2 auto;
 }
-.subheadingTransaction{
+.subheadingTransaction {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -648,11 +647,63 @@ main {
   width: 95%;
   border-radius: 10px;
 }
+
+.stock-data-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1vw;
+  height: 55vh;
+  width: 100%;
+  /* border: solid green; */
+}
+
+.stock-image {
+  height: 9vh;
+  width: 5vw;
+}
+.stock-data-header .stock-image {
+  height: 5vh;
+  width: 1.5vw;
+}
+
+.stock-data-header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 20vh;
+  width: 23vw;
+  /* border: solid purple; */
+  contain: content;
+  font-size: 3vh;
+}
+
+.stock-main-data {
+  height: 30vh;
+  width: 90vw;
+  /* border: solid orange; */
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-align: left;
+}
+
+.main-data-left {
+  height: 100%;
+  border: solid blue;
+}
+
+.main-data-right {
+  height: 100%;
+  border: solid purple;
+}
+
 @keyframes slide {
   0% {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(2450px, 0, 0);
   }
   100% {
-    transform: translate3d(-1500px, 0, 0); /* The image width */
+    transform: translate3d(-2200px, 0, 0); /* The image width */
   }
 }
