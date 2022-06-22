@@ -86,5 +86,6 @@ export const StockPurchase = ({ symbol, price }) => {
         </div>
       </div>
     </div>
+
   );
 };

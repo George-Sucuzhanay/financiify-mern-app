@@ -207,8 +207,8 @@ main {
   align-items: center;
   gap: 25px;
   contain: content;
-  min-height: 86vh;
-  max-height: 86vh;
+  min-height: 88vh;
+  max-height: 88vh;
   width: 58%;
   padding-top: 10px;
   border-radius: 10px;

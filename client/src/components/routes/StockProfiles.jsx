@@ -7,30 +7,28 @@ export const StockProfiles = ({ symbol }) => {
   const [quote, setQuote] = useState([]);
   // const [news, setNews] = useState([])
 
-  useEffect(() => {
-    if (symbol) {
-      fetchProfile();
-    }
-  }, []);
+    useEffect(() => {
+      if(symbol) {
+        fetchProfile()
+      }
+    }, [symbol])
+   
+   
+    const fetchProfile = async () => {
+          try {
+            const stockProfile = await axios
+              .get(`https://cloud.iexapis.com/stable/stock/${symbol.toLowerCase()}/batch?types=quote,company,logo,news&range=1m&last=5&token=${process.env.REACT_APP_IEXCLOUD_TOKEN}`)
+              .then(stockProfile => {
+                setCompany(stockProfile.data.company)
+                setPhoto(stockProfile.data.logo)
+                setQuote(stockProfile.data.quote)
+                // setNews(stockProfile.data.news)
+              });
+          } catch (error) {
+            console.log(error)
+          }
+    };
 
-  const fetchProfile = async () => {
-    try {
-      const stockProfile = await axios
-        .get(
-          `https://cloud.iexapis.com/stable/stock/${symbol.toLowerCase()}/batch?types=quote,company,logo,news&range=1m&last=5&token=${
-            process.env.REACT_APP_IEXCLOUD_TOKEN
-          }`
-        )
-        .then((stockProfile) => {
-          setCompany(stockProfile.data.company);
-          setPhoto(stockProfile.data.logo);
-          setQuote(stockProfile.data.quote);
-          // setNews(stockProfile.data.news)
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div className="stock-data-container">
@@ -105,7 +103,10 @@ export const StockProfiles = ({ symbol }) => {
       {/* <div className="myChild">
             <p id="profileDescription">{company.description}</p>
           </div> */}
-      <StockPurchase symbol={quote.symbol} price={quote.latestPrice} />
-    </div>
-  );
-};
+
+          <StockPurchase symbol={quote.symbol} price={quote.latestPrice} />
+ 
+        </div>
+    )
+}
+
