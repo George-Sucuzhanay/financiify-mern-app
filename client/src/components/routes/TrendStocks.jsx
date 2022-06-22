@@ -33,7 +33,7 @@ export const TrendStocks = () => {
               <div className="mytrendsdata">
                 <p>{trend.latestPrice}</p>
                 <p style={{ color: "red" }}>
-                  ({trend.changePercent.toString().substr(0, 5)})
+                  ({trend.changePercent.toString().substr(0, 5)}%)
                 </p>
               </div>
             </Col>
@@ -45,7 +45,7 @@ export const TrendStocks = () => {
               <div className="mytrendsdata">
                 <p>{trend.latestPrice}</p>
                 <p style={{ color: "green" }}>
-                  ({trend.changePercent.toString().substr(0, 5)})
+                  (+{trend.changePercent.toString().substr(0, 4)}%)
                 </p>
               </div>
             </Col>
