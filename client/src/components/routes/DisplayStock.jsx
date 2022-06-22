@@ -6,7 +6,7 @@ import { StockProfiles } from "./StockProfiles";
 
 export const DisplayStock = () => {
   const [inputValue, setValue] = useState(null)
-  const [selectedValue, setSelectedValue] = useState("")
+  const [selectedValue, setSelectedValue] = useState(null)
 
   const handleInputChange = value => {
     // setTimeout(5000) work on making a timeout for the stock ticker so that it wait some time before making api call
