@@ -177,7 +177,7 @@ export const StockPurchase = ({ symbol, price, company }) => {
 
     if (updated) {
       handleUpdating();
-      handleCreatingTransactionData();
+      // handleCreatingTransactionData();
       setUpdated(false);
     }
   }, [currentStockQuantity, currentObjectData, updated, updatedValue]);
@@ -225,6 +225,5 @@ export const StockPurchase = ({ symbol, price, company }) => {
         transactionType={transactionType}
       />
     </div>
-
   );
 };
