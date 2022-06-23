@@ -19,8 +19,6 @@ export const DisplayStocks = () => {
       url: `${process.env.REACT_APP_API_URL}/api/stocks`,
       method: "GET",
     });
-    // console.log(process.env.REACT_APP_API_URL);
-    // console.log(response.data.stocks);
     setCurrentStocks(response.data.stocks);
   };
 
@@ -46,7 +44,9 @@ export const DisplayStocks = () => {
                 </div>
                 <div className="purchasable-stock-left">
                   <p>Market Price: ${data.stock_price}</p>
-                  <p>Asset Value: ${data.totalCashValue.toFixed(2)}</p>
+                  <p>
+                    Asset Value: ${parseFloat(data.totalCashValue).toFixed(2)}
+                  </p>
                 </div>
 
                 <NavLink to={`/dashboard/${data._id}`} className="trade-button">

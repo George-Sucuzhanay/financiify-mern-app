@@ -54,8 +54,8 @@ export const Dashboard = () => {
     <Layout>
       <div className="dashboard-container">
         <div className="dashboard-left-elements">
-          <div className="overview myParent">
-            <div className="myChild overview-values">
+          <div className="overview ">
+            <div className=" overview-values">
               <p>ACCOUNT VALUE</p>
               <h1>${currentAccountValue}</h1>
               <p>BUYING POWER</p>
