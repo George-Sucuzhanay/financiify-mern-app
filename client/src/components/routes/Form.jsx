@@ -35,7 +35,7 @@ export const Form = (props) => {
         />
       </form>
       
-      <h2>${props.selectedStock.stock_price}</h2>
+      <h2>${props.selectedStock.stock_price ?  props.selectedStock.stock_price : props.price}</h2>
       <h2>${parseFloat(props.currentTotalPrice).toFixed(2)}</h2>
     </div>
   );

@@ -14,11 +14,11 @@ export const StockPurchase = ({ symbol, price, company }) => {
   const [isConfirmationHidden, setIsConfirmationHidden] = useState("none");
   const [currentStockQuantity, setCurrentStockQuantity] = useState(1);
   const [currentObjectData, setCurrentObjectData] = useState({
-    symbol: null,
+    symbol: symbol,
     action: null,
     qty: null,
-    price: null,
-    total: null,
+    price: price,
+    total: currentTotalPrice,
   });
   const [currentAssetTotal, setCurrentAssetTotal] = useState(0);
   const [currentAssetObjectData, setCurrentAssetObjectData] = useState({
@@ -27,9 +27,9 @@ export const StockPurchase = ({ symbol, price, company }) => {
   const [currentTransactionObject, setCurrentTransactionObject] = useState({
     stock_name: null,
     stock_price: price,
-    stock_symbol: null,
+    stock_symbol: symbol,
     quantity: null,
-    totalCashValue: null,
+    totalCashValue: currentTotalPrice,
   });
 
   const handleRenderingClick = (event) => {
@@ -202,7 +202,8 @@ export const StockPurchase = ({ symbol, price, company }) => {
           transactionType={transactionType}
           handleInputValueChange={handleInputValueChange}
           selectedStock={currentTransactionObject}
-          currentTotalPrice={currentTotalPrice}
+          price={price}
+          currentTotalPrice={currentValue * price}
         />
       </div>
       <div className="transaction-row2 transaction-corners">

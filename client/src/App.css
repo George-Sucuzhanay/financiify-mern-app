@@ -84,7 +84,7 @@ main {
 }
 
 .home-top-container {
-  background-color: var(--pastelBlue);
+  background-color: var(--pastelBlue)!important;
   height: 90vh;
 }
 .home-middle-container {
