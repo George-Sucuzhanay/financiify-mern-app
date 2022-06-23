@@ -2,17 +2,16 @@ import { Layout } from "../shared/Layout";
 import { DisplayStock } from "./DisplayStock";
 import { DisplayStocks } from "./DisplayStocks";
 import { TrendStocks } from "./TrendStocks";
-import portfolioImage from "../../assets/portfolio.png"
+import portfolioImage from "../../assets/portfolio.png";
 import axios from "axios";
 import { useState, useEffect } from "react";
-// import { MarketNews } from "./MarketNews";
+import { MarketNews } from "./MarketNews";
 export const Dashboard = () => {
   const [currentTransactionData, setCurrentTransactionData] = useState([]);
   const [currentAccountValue, setCurrentAccountValue] = useState(1000000);
   const [currentBuyingPower, setCurrentBuyingPower] = useState(1000000);
-  
+
   const fetchAllStocks = async () => {
-    // eslint-disable-next-line
     const response = await axios({
       url: `${process.env.REACT_APP_API_URL}/api/stocks`,
       method: "GET",
@@ -49,25 +48,21 @@ export const Dashboard = () => {
 
   useEffect(() => {
     handleUpdatingOverviewValues();
-    // eslint-disable-next-line
   }, [currentTransactionData]);
 
   return (
     <Layout>
       <div className="dashboard-container">
-      <div className="trending-stocks">
-          <TrendStocks />
-        </div>
         <div className="dashboard-left-elements">
-          <div className="overview myParent">
-            <div className="myChild overview-values">
+          <div className="overview ">
+            <div className=" overview-values">
               <p>ACCOUNT VALUE</p>
               <h1>${currentAccountValue}</h1>
               <p>BUYING POWER</p>
               <h1>${currentBuyingPower}</h1>
             </div>
             <div className="myChild">
-              <img id="portfolioImage"src={portfolioImage} alt=""></img>
+              <img id="portfolioImage" src={portfolioImage} alt=""></img>
             </div>
           </div>
 
@@ -76,11 +71,9 @@ export const Dashboard = () => {
             <div className="subheadingTransaction">
               <div className="transaction-column">
                 <p>Symbol</p>
-        
               </div>
               <div className="transaction-column">
-                <p>Trade Type</p>
-
+                <p>Action</p>
               </div>
               <div className="transaction-column">
                 <p>QTY</p>
@@ -119,17 +112,17 @@ export const Dashboard = () => {
               })}
           </div>
         </div>
-        
+
         <div className="dashboard-right-elements">
           <div className="api-stocks">
             <DisplayStock />
-            
           </div>
           <DisplayStocks />
           {/* <MarketNews/> */}
         </div>
-
-        
+        <div className="trending-stocks">
+          <TrendStocks />
+        </div>
       </div>
     </Layout>
   );
