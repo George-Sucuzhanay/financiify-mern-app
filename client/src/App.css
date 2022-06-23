@@ -50,6 +50,9 @@ footer {
   font-family: "Poppins", sans-serif;
   font-weight: 800;
 }
+#navbar-logo{
+  width: 11%;
+}
 
 main {
   min-height: 80vh;
@@ -331,6 +334,7 @@ main {
   border-radius: 10px;
   background-color: white;
   color: black;
+
 }
 
 .selected-stock-info {
@@ -653,6 +657,7 @@ h1 {
   margin: 1px;
   background-color: white;
   border-bottom: thin solid rgba(0, 0, 0, 0.99);
+
 }
 
 .container {
@@ -707,6 +712,7 @@ h1 {
 
 .subheadingTransaction2 h1 {
   font-size: 23px;
+
 }
 
 .form {

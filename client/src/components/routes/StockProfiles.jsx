@@ -92,6 +92,7 @@ export const StockProfiles = ({ symbol }) => {
 
       {/* <br></br> */}
       {/* <h2>Industries: </h2>
+
                   
                   <ul className="industries">
                     {(profile.tags || []).map((tag, key) => {

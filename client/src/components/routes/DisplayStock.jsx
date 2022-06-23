@@ -8,6 +8,7 @@ export const DisplayStock = () => {
   const [inputValue, setValue] = useState(null);
   const [selectedValue, setSelectedValue] = useState("");
 
+
   const handleInputChange = (value) => {
     // setTimeout(5000) work on making a timeout for the stock ticker so that it wait some time before making api call
     setValue(value);

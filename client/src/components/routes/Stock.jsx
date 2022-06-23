@@ -288,7 +288,7 @@ export const Stock = () => {
       </div>
 
       <div className="selected-stock-info">
-        <div className="stock-buttons">
+        {/* <div className="stock-buttons">
           <button
             onClick={(e) => handleRenderingClick(e)}
             name="buy"
@@ -315,7 +315,7 @@ export const Stock = () => {
           >
             Sell
           </button>
-        </div>
+        </div> */}
 
         <HandleTradeOptionsRendering
           isRendered={isRendered}
