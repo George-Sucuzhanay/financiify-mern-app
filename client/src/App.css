@@ -45,14 +45,22 @@ footer {
   align-items: center;
   min-height: 8vh;
   max-height: 10vh;
-  width: 100vw;
+  width: 60vw;
   border: solid --textColor 0.1vw;
   font-family: "Poppins", sans-serif;
   font-weight: 800;
+  /* border: solid green; */
 }
-#navbar-logo {
+
+header {
+  min-width: 40vw;
+  justify-content: space-between;
+  font-size: 2rem;
+}
+
+/* #navbar-logo {
   width: 11%;
-}
+} */
 
 main {
   min-height: 80vh;
@@ -214,8 +222,8 @@ main {
   align-items: center;
   gap: 1px;
   contain: content;
-  min-height: 88vh;
-  max-height: 88vh;
+  min-height: 84vh;
+  max-height: 84vh;
   width: 58%;
   padding-top: 10px;
   border-radius: 10px;
@@ -527,7 +535,7 @@ main {
 }
 
 #navbar-logo {
-  width: 11%;
+  width: 35%;
 }
 .parentDiv {
   display: flex;
@@ -850,6 +858,38 @@ h1 {
 }
 #stockTickerAndExchange {
   font-size: 21px;
+}
+
+.external-links,
+.external-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1vh;
+  min-height: 10vh;
+  width: 100%;
+  font-size: 1.8rem;
+}
+
+.external-links {
+  padding: 10px;
+  width: 50vw;
+}
+
+.external-link {
+  flex-direction: column;
+  justify-content: center;
+  min-height: 10vh;
+  max-height: 10vh;
+  width: 300px;
+  font-size: 1.2rem;
+}
+
+.external-link img {
+  height: 50px;
+  width: 50px;
+  border-radius: 4px;
 }
 
 @keyframes slide {

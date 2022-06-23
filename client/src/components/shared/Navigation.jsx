@@ -1,13 +1,15 @@
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/black-logo.png"
+import logo from "../../assets/black-logo.png";
 export const Navigation = () => {
   return (
     <header>
-      <img id="navbar-logo"src={logo}></img>
+      <NavLink to="/">
+        <img id="navbar-logo" src={logo}></img>
+      </NavLink>
 
-      <NavLink to="/home">Home</NavLink>
+      <NavLink to="/">Home</NavLink>
       <NavLink to="/dashboard">Dashboard</NavLink>
-      <NavLink to="/learn-more">Learn More</NavLink>
+      {/* <NavLink to="/learn-more">Learn More</NavLink> */}
     </header>
   );
 };

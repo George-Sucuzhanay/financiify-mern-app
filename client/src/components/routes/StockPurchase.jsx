@@ -10,7 +10,6 @@ export const StockPurchase = ({ symbol, price, company }) => {
   const [currentValue, setCurrentValue] = useState(1);
   const [updatedValue, setUpdatedValue] = useState(0);
   const [updatedAssetValue, setUpdatedAssetValue] = useState();
-  const [currentTotalPrice, setCurrentTotalPrice] = useState();
   const [isConfirmationHidden, setIsConfirmationHidden] = useState("none");
   const [currentStockQuantity, setCurrentStockQuantity] = useState(1);
   const [currentObjectData, setCurrentObjectData] = useState({
@@ -18,9 +17,12 @@ export const StockPurchase = ({ symbol, price, company }) => {
     action: null,
     qty: null,
     price: price,
-    total: currentTotalPrice,
+    total: price,
   });
-  const [currentAssetTotal, setCurrentAssetTotal] = useState(0);
+  const [currentTotalPrice, setCurrentTotalPrice] = useState(
+    currentObjectData.total
+  );
+  // const [currentAssetTotal, setCurrentAssetTotal] = useState(0);
   const [currentAssetObjectData, setCurrentAssetObjectData] = useState({
     totalCashValue: 0,
   });
@@ -42,6 +44,7 @@ export const StockPurchase = ({ symbol, price, company }) => {
   };
 
   const handleInputValueChange = (event) => {
+    // console.log(currentTotalPrice);
     event.preventDefault();
     if (event.target.name === "plus") {
       // console.log("plus");
@@ -63,20 +66,20 @@ export const StockPurchase = ({ symbol, price, company }) => {
 
   const closeModal = (event) => {
     event.preventDefault();
+    // console.log(currentTotalPrice);
     if (event.target.name === "yes") {
       setIsConfirmationHidden("none");
       if (!updated && transactionType === "buy") {
-        console.log(currentTotalPrice);
         setUpdated(true);
         setUpdatedValue(currentStockQuantity + currentValue);
-        setUpdatedAssetValue(
-          (currentAssetTotal + currentTotalPrice).toFixed(2)
-        );
+        setUpdatedAssetValue(currentTotalPrice);
         const updatedFieldName = { stock_name: company.companyName };
         const updatedFieldPrice = { stock_price: price };
         const updatedFieldSymbol = { stock_symbol: symbol };
         const updatedFieldQty = { quantity: currentValue };
-        const updatedFieldTotal = { totalCashValue: currentTotalPrice };
+        const updatedFieldTotal = {
+          totalCashValue: price * currentValue,
+        };
 
         const editedFieldName = Object.assign(
           currentTransactionObject,
@@ -116,40 +119,39 @@ export const StockPurchase = ({ symbol, price, company }) => {
     } else {
       return setIsConfirmationHidden("none");
     }
-    console.log(currentTransactionObject);
+    // console.log(currentTransactionObject);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(currentTransactionObject);
     setIsConfirmationHidden("flex");
   };
 
   useEffect(() => {
     const handleUpdating = async () => {
-      console.log(currentTransactionObject);
+      // console.log(currentTransactionObject);
       await axios({
         url: `${process.env.REACT_APP_API_URL}/api/stocks/`,
         method: "POST",
         data: currentTransactionObject,
       });
 
-      setCurrentObjectData({ quantity: 0 });
-      setCurrentAssetObjectData({ totalCashValue: 0 });
+      // setCurrentObjectData({ quantity: 0 });
+      // setCurrentAssetObjectData({ totalCashValue: 0 });
     };
 
     const updatedFieldAction = { action: "buy" };
     const updatedFieldPrice = {
-      stock_price: currentTransactionObject.stock_price,
+      price: currentTransactionObject.stock_price,
     };
     const updatedFieldSymbol = {
       symbol: currentTransactionObject.stock_symbol,
     };
     const updatedFieldQty = {
-      qty: currentTransactionObject.stock_symbol,
+      qty: currentTransactionObject.quantity,
     };
     const updatedFieldTotal = {
-      totalCashValue: currentTransactionObject.totalCashValue,
+      total: currentTransactionObject.totalCashValue,
     };
 
     setUpdatedValue(0);
@@ -158,7 +160,6 @@ export const StockPurchase = ({ symbol, price, company }) => {
     const editedSymbol = Object.assign(currentObjectData, updatedFieldSymbol);
     const editedQty = Object.assign(currentObjectData, updatedFieldQty);
     const editedTotal = Object.assign(currentObjectData, updatedFieldTotal);
-
     setCurrentObjectData(
       editedAction,
       editedPrice,
@@ -177,7 +178,7 @@ export const StockPurchase = ({ symbol, price, company }) => {
 
     if (updated) {
       handleUpdating();
-      // handleCreatingTransactionData();
+      handleCreatingTransactionData();
       setUpdated(false);
     }
   }, [currentStockQuantity, currentObjectData, updated, updatedValue]);
