@@ -1,11 +1,11 @@
 export const Form = (props) => {
+  console.log(props.currentValue);
   return (
-    <div className="transaction-values transaction-row2">
+    <div className="transaction-values">
       <form
         onSubmit={(e) => props.handleSubmit(e)}
         className="quantity-container"
         name={props.transactionType}
-        currentTotalPrice
       >
         <input
           type="button"
@@ -34,9 +34,9 @@ export const Form = (props) => {
           onClick={(e) => props.handleInputValueChange(e)}
         />
       </form>
-
+      
       <h2>${props.selectedStock.stock_price}</h2>
-      <h2>${props.currentTotalPrice.toFixed(2)}</h2>
+      <h2>${parseFloat(props.currentTotalPrice).toFixed(2)}</h2>
     </div>
   );
 };

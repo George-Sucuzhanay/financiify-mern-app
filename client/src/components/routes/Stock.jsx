@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Form } from "./Form";
-import { StockProfiles } from "./StockProfiles";
+import { HandleTransactionConfirmation } from "../shared/HandleTransactionConfirmation";
+import { HandleTradeOptionsRendering } from "../shared/HandleTradeOptionsRendering";
 
 export const Stock = () => {
   const [selectedStock, setSelectedStock] = useState({}); // use selectedStock to render company info
@@ -57,7 +57,6 @@ export const Stock = () => {
       url: `${process.env.REACT_APP_API_URL}/api/stocks/${id}`,
       method: "GET",
     });
-
     setSelectedStock(response.data.stock);
     setCurrentStockQuantity(response.data.stock.quantity);
     setCurrentAssetTotal(response.data.stock.totalCashValue);
@@ -74,6 +73,8 @@ export const Stock = () => {
   }, [id]);
 
   const handleRenderingClick = (event) => {
+    event.preventDefault();
+
     if (event.target.name === "buy") {
       setIsRendered(true);
       setTransactionType("buy");
@@ -115,6 +116,7 @@ export const Stock = () => {
     }
   };
 
+  // console.log(currentValue);
   const closeModal = (event) => {
     event.preventDefault();
     if (event.target.name === "yes") {
@@ -266,59 +268,6 @@ export const Stock = () => {
     fetchSingleStock();
   }, [currentStockQuantity, currentObjectData, id, updated, updatedValue]);
 
-  const HandleRendering = () => {
-    if (!isRendered) {
-      return <StockProfiles symbol={selectedStock.stock_symbol} />;
-    } else {
-      return (
-        <div className="transaction-options">
-          <div className="transaction-titles">
-            <h2>Quantity</h2>
-            <h2>Market Price</h2>
-            <h2>Total</h2>
-          </div>
-          <Form
-            handleSubmit={handleSubmit}
-            currentValue={currentValue}
-            transactionType={transactionType}
-            handleInputValueChange={handleInputValueChange}
-            selectedStock={selectedStock}
-            currentTotalPrice={currentTotalPrice}
-          />
-
-          <div className="company-statistics">
-            <h2>Market Cap</h2>
-            <h2>Open Price</h2>
-            <h2>Employees</h2>
-            <h2>CEO</h2>
-          </div>
-        </div>
-      );
-    }
-  };
-
-  const HandleTransactionConfirmation = () => {
-    return (
-      <div
-        className="confirmation-screen"
-        style={{ top: window.innerHeight / 3, display: isConfirmationHidden }}
-      >
-        <span className="close-button" onClick={(e) => closeModal(e)}></span>
-
-        <p>Are you sure you want to buy amount?</p>
-
-        <div className="stock-buttons">
-          <button onClick={(e) => closeModal(e)} name="yes">
-            Yes
-          </button>
-          <button onClick={(e) => closeModal(e)} name="no">
-            No
-          </button>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div className="selected-stock-container">
       <button
@@ -368,8 +317,20 @@ export const Stock = () => {
           </button>
         </div>
 
-        <HandleRendering />
-        <HandleTransactionConfirmation />
+        <HandleTradeOptionsRendering
+          isRendered={isRendered}
+          handleSubmit={handleSubmit}
+          currentValue={currentValue}
+          transactionType={transactionType}
+          handleInputValueChange={handleInputValueChange}
+          selectedStock={selectedStock}
+          currentTotalPrice={currentTotalPrice}
+        />
+        <HandleTransactionConfirmation
+          closeModal={closeModal}
+          isConfirmationHidden={isConfirmationHidden}
+          transactionType={transactionType}
+        />
       </div>
     </div>
   );

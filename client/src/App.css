@@ -121,13 +121,15 @@ main {
 .overview {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
   max-height: 40vh;
   width: 100%;
   border-radius: 10px;
   background-color: #edf2fb;
   color: black;
+  /* border: solid green; */
 }
 
 .overview-values {
@@ -138,10 +140,11 @@ main {
   align-items: left;
   text-align: left;
   min-height: 30vh;
-  width: 100%;
+  width: 40%;
   border-radius: 10px;
   background-color: #edf2fb;
   color: black;
+  /* border: solid purple; */
 }
 
 .latest-transactions {
@@ -192,6 +195,7 @@ main {
   height: 9vh;
   width: 20%;
   font-size: 1rem;
+  /* border: solid black 0.1vw; */
 }
 
 .transaction-column p {
@@ -205,7 +209,7 @@ main {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  gap: 25px;
+  gap: 1px;
   contain: content;
   min-height: 86vh;
   max-height: 86vh;
@@ -333,13 +337,13 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 2vh;
   align-items: center;
   min-height: 65vh;
   max-height: 65vh;
   width: 94%;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
+  contain: content;
 }
 
 .transaction-options {
@@ -360,6 +364,7 @@ main {
   justify-content: space-evenly;
   align-items: center;
   width: 50vw;
+  /* border: solid green; */
 }
 
 .transaction-values {
@@ -368,7 +373,8 @@ main {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  /* width: 50vw; */
+  width: 50vw;
+  /* border: solid green; */
 }
 
 .company-statistics {
@@ -415,7 +421,7 @@ main {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  margin-top: 2vh;
+  margin-top: 1.5vh;
   min-height: 7vh;
   width: 84%;
   font-family: "Poppins", sans-serif;
@@ -468,8 +474,7 @@ main {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1vh;
-  height: 41vh;
+  height: 25vh;
   width: 40vw;
   border: solid purple;
   background-color: white;
@@ -561,8 +566,7 @@ main {
   text-align: center;
 }
 .myChild {
-  flex: 1;
-  margin: 10px;
+  width: 40%;
   text-align: center;
   font-size: 30px;
 }
@@ -629,10 +633,12 @@ main {
 h1 {
   text-align: left;
 }
+
 .overview-values p {
   font-size: 0.999rem !important;
   letter-spacing: 0.1666666667em !important;
 }
+
 .left-align {
   text-align: left;
   margin: -4px;
@@ -649,6 +655,7 @@ h1 {
 .container {
   columns: 2 auto;
 }
+
 .subheadingTransaction {
   display: flex;
   flex-direction: row;
@@ -665,30 +672,55 @@ h1 {
   color: white;
   /* border-radius: 10px; */
 }
+
+.transactions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: solid blue; */
+  height: 25vh;
+  width: 70vw;
+}
+
 .subheadingTransaction2 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  max-height: 4vh;
-  /* width: 95%; */
+  min-height: 5vh;
+  max-height: 5vh;
+  width: 95%;
   font-weight: bold;
-  margin: -4px;
+  padding-top: 1vh;
   border-top-left-radius: 8px 8px;
   border-top-right-radius: 8px 8px;
   /* border-bottom: thin solid rgba(0,0,0,.19); */
   background-color: #003049;
   color: white;
   /* border-radius: 10px;*/
+  contain: content;
 }
+
 .subheadingTransaction2 h1 {
   font-size: 23px;
 }
+
+.form {
+  display: flex;
+  /* border: solid green; */
+  height: 10vh;
+  width: 95%;
+  background-color: white;
+}
+
 .transaction-row2 {
-  margin: -4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
   height: 9vh;
-  /* width: 95%; */
+  width: 95%;
   border-bottom: thin solid rgba(0, 0, 0, 0.99);
   /* border-radius: 8px; */
   /* box-shadow: 1px 1px; */
@@ -700,40 +732,74 @@ h1 {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  gap: 1vw;
-  height: 55vh;
+  gap: 0.1vw;
+  margin-top: 1.5vh;
+  min-height: 38vh;
   width: 100%;
   /* border: solid green; */
-}
-
-.stock-image {
-  height: 9vh;
-  width: 5vw;
-}
-.stock-data-header .stock-image {
-  height: 5vh;
-  width: 1.5vw;
+  contain: content;
 }
 
 .stock-data-header {
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.5vw;
+  /* border: solid red; */
+  width: 100vw;
+}
+
+.stock-image {
+  width: 5vw;
+  border-radius: 60px;
+}
+
+.stock-data-sub-header .stock-image {
+  min-height: 3vh;
+  width: 1.5vw;
+}
+
+.stock-data-sub-header {
+  display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  height: 20vh;
-  width: 23vw;
+  min-height: 11vh;
+  max-width: 15vw;
   /* border: solid purple; */
   contain: content;
-  font-size: 3vh;
+  font-size: 2vh;
 }
 
-.stock-main-data {
-  height: 30vh;
-  width: 90vw;
-  /* border: solid orange; */
-  font-size: 1.2rem;
-  font-weight: 400;
+.stock-data-sub-header p {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5vw;
+  flex-wrap: wrap;
+  /* border: solid blue; */
+  width: 30vw;
+}
+
+.stock-data-change {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-end;
+  min-height: 1vh;
+  min-width: 54vw;
+  max-width: 54vw;
   text-align: left;
+}
+
+.data-table {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 80vw;
+  /* border: solid green;  */
 }
 
 .main-data-left {
