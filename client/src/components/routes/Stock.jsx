@@ -270,7 +270,7 @@ export const Stock = () => {
 
   return (
     <div className="selected-stock-container">
-       <button
+      <button
         className="return-button"
         onClick={(e) => {
           e.preventDefault();
@@ -280,10 +280,8 @@ export const Stock = () => {
         Return to Previous Page
       </button>
 
-
-
       <div className="selected-stock-info">
-        {/* <div className="stock-buttons">
+        <div className="stock-buttons">
           <button
             onClick={(e) => handleRenderingClick(e)}
             name="buy"
@@ -310,7 +308,7 @@ export const Stock = () => {
           >
             Sell
           </button>
-        </div> */}
+        </div>
 
         <HandleTradeOptionsRendering
           isRendered={isRendered}
