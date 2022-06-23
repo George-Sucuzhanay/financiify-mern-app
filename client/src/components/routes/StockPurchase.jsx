@@ -4,22 +4,23 @@ import { Form } from "./Form";
 import { HandleTransactionConfirmation } from "../shared/HandleTransactionConfirmation";
 
 export const StockPurchase = ({ symbol, price, company }) => {
-  console.log(company);
-  console.log(price);
-  // console.log(symbol);
   const [isRendered, setIsRendered] = useState(false);
   const [updated, setUpdated] = useState(false);
   const [transactionType, setTransactionType] = useState("buy");
   const [currentValue, setCurrentValue] = useState(1);
   const [updatedValue, setUpdatedValue] = useState(0);
-  const [updatedAssetValue, setUpdatedAssetValue] = useState(0);
-  const [currentTotalPrice, setCurrentTotalPrice] = useState(price);
+  const [updatedAssetValue, setUpdatedAssetValue] = useState();
+  const [currentTotalPrice, setCurrentTotalPrice] = useState();
   const [isConfirmationHidden, setIsConfirmationHidden] = useState("none");
   const [currentStockQuantity, setCurrentStockQuantity] = useState(1);
   const [currentObjectData, setCurrentObjectData] = useState({
-    quantity: 0,
+    symbol: null,
+    action: null,
+    qty: null,
+    price: null,
+    total: null,
   });
-  const [currentAssetTotal, setCurrentAssetTotal] = useState(price);
+  const [currentAssetTotal, setCurrentAssetTotal] = useState(0);
   const [currentAssetObjectData, setCurrentAssetObjectData] = useState({
     totalCashValue: 0,
   });
@@ -125,31 +126,58 @@ export const StockPurchase = ({ symbol, price, company }) => {
   };
 
   useEffect(() => {
-    const updatedField = { quantity: updatedValue };
-    const updatedTotalAsset = { totalCashValue: updatedAssetValue };
-    setUpdatedValue(0);
-    const editedItem = Object.assign(currentObjectData, updatedField);
-    const editedCashValue = Object.assign(
-      currentAssetObjectData,
-      updatedTotalAsset
-    );
-    setCurrentObjectData(editedItem);
-    setCurrentAssetObjectData(editedCashValue);
-
     const handleUpdating = async () => {
-      console.log(currentObjectData);
+      console.log(currentTransactionObject);
       await axios({
         url: `${process.env.REACT_APP_API_URL}/api/stocks/`,
         method: "POST",
-        data: currentObjectData,
+        data: currentTransactionObject,
       });
 
       setCurrentObjectData({ quantity: 0 });
       setCurrentAssetObjectData({ totalCashValue: 0 });
     };
 
+    const updatedFieldAction = { action: "buy" };
+    const updatedFieldPrice = {
+      stock_price: currentTransactionObject.stock_price,
+    };
+    const updatedFieldSymbol = {
+      symbol: currentTransactionObject.stock_symbol,
+    };
+    const updatedFieldQty = {
+      qty: currentTransactionObject.stock_symbol,
+    };
+    const updatedFieldTotal = {
+      totalCashValue: currentTransactionObject.totalCashValue,
+    };
+
+    setUpdatedValue(0);
+    const editedAction = Object.assign(currentObjectData, updatedFieldAction);
+    const editedPrice = Object.assign(currentObjectData, updatedFieldPrice);
+    const editedSymbol = Object.assign(currentObjectData, updatedFieldSymbol);
+    const editedQty = Object.assign(currentObjectData, updatedFieldQty);
+    const editedTotal = Object.assign(currentObjectData, updatedFieldTotal);
+
+    setCurrentObjectData(
+      editedAction,
+      editedPrice,
+      editedSymbol,
+      editedQty,
+      editedTotal
+    );
+
+    const handleCreatingTransactionData = async () => {
+      await axios({
+        url: `${process.env.REACT_APP_API_TRANSACTIONS}`,
+        method: "POST",
+        data: currentObjectData,
+      });
+    };
+
     if (updated) {
       handleUpdating();
+      handleCreatingTransactionData();
       setUpdated(false);
     }
   }, [currentStockQuantity, currentObjectData, updated, updatedValue]);

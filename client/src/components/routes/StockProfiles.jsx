@@ -84,7 +84,7 @@ export const StockProfiles = ({ symbol }) => {
           <h3 id="lower-right">{quote.week52Low}</h3>
         </div>
       </div>
-      {symbol && quote && company ? (
+      {quote && company ? (
         <StockPurchase
           symbol={quote.symbol}
           price={quote.latestPrice}
