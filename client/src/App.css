@@ -780,11 +780,7 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
   min-height: 11vh;
-<<<<<<< merging
   max-width: 20vw;
-=======
-  /* max-width: 15vw; */
->>>>>>> main
   /* border: solid purple; */
   contain: content;
   font-size: 2vh;
@@ -818,17 +814,17 @@ h1 {
   align-items: center;
   height: 20vh;
   width: 80vw;
-  border: solid green;
+  /* border: solid green; */
 }
 
 .main-data-left {
   height: 100%;
-  border: solid blue;
+  /* border: solid blue; */
 }
 
 .main-data-right {
   height: 100%;
-  border: solid purple;
+  /* border: solid purple; */
 }
 .latest-transactions h1 {
   margin-top: 1vh;
