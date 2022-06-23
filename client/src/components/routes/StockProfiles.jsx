@@ -68,8 +68,8 @@ export const StockProfiles = ({ symbol }) => {
         </div>
         <div className="myChild left-align">
           <h3>{quote.volume}</h3>
-          <h3>{quote.high}</h3>
-          <h3>{quote.low}</h3>
+          <h3>{quote.high ? quote.high : "N/A"}</h3>
+          <h3>{quote.low ? quote.low : "N/A"}</h3>
         </div>
         <div className="myChild left-align">
           <h3>Market Cap</h3>
@@ -77,9 +77,9 @@ export const StockProfiles = ({ symbol }) => {
           <h3>52 Week Low ($)</h3>
         </div>
         <div className="myChild left-align">
-          <h3 id="upper-right">{quote.marketCap}</h3>
-          <h3>{quote.week52High}</h3>
-          <h3 id="lower-right">{quote.week52Low}</h3>
+          <h3 id="upper-right">{quote.marketCap ? quote.marketCap : "N/A"}</h3>
+          <h3>{quote.week52High ? quote.week52High : "N/A"}</h3>
+          <h3 id="lower-right">{quote.week52Low ? quote.week52Low : "N/A"}</h3>
         </div>
       </div>
       {quote && company ? (

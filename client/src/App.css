@@ -743,6 +743,7 @@ h1 {
   justify-content: center;
   gap: 0.1vw;
   margin-top: 1.5vh;
+  max-width: 150vh;
   min-height: 38vh;
   width: 100%;
   /* border: solid green; */
@@ -774,7 +775,7 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
   min-height: 11vh;
-  max-width: 15vw;
+  /* max-width: 15vw; */
   /* border: solid purple; */
   contain: content;
   font-size: 2vh;
