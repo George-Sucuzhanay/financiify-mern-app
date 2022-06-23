@@ -1,4 +1,4 @@
-![](src/assets/logo1.png)
+![](client/src/assets/white-logo.png)
 
 # 📈 Financify App 📈
 
@@ -14,11 +14,14 @@ Financify is a intuitive web application that is that will serve to help users l
 ## 🎨 Wireframe
 
 <div>
-<img src="src/assets/homepage.svg" width= 400px>
-<img src="src/assets/displayList.svg" width= 400px>
+<img src="client/src/assets/landingpage.png" width= 400px>
+<img src="client/src/assets/homepage.png" width= 400px>
+<img src="client/src/assets/dashboard-1.png" width= 400px>
+<img src="client/src/assets/dashboard-2.png" width= 400px>
+
 </div>
 
-[Figma UX Design](https://www.figma.com/file/nVNAco9PUDnng4ziMvbCRs/Recipes-MERN-CRUD-APP?node-id=0%3A1)
+[Figma UX Design](https://www.figma.com/file/seXFjKic8dSObWZzudN7J3/Financiify-Paper-Trading-App---UX?node-id=0%3A1)
 
 
 ## 🚀 MVP:
