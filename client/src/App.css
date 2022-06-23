@@ -50,7 +50,7 @@ footer {
   font-family: "Poppins", sans-serif;
   font-weight: 800;
 }
-#navbar-logo{
+#navbar-logo {
   width: 11%;
 }
 
@@ -84,7 +84,7 @@ main {
 }
 
 .home-top-container {
-  background-color: var(--pastelBlue)!important;
+  background-color: var(--pastelBlue) !important;
   height: 90vh;
 }
 .home-middle-container {
@@ -334,7 +334,6 @@ main {
   border-radius: 10px;
   background-color: white;
   color: black;
-
 }
 
 .selected-stock-info {
@@ -527,7 +526,7 @@ main {
   align-items: stretch;
 }
 
-#navbar-logo{
+#navbar-logo {
   width: 11%;
 }
 .parentDiv {
@@ -573,10 +572,18 @@ main {
   text-align: center;
 }
 .myChild {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
   width: 40%;
   text-align: center;
   font-size: 30px;
 }
+
+.myChild h3 {
+  height: 6vh;
+}
+
 .industries {
   list-style-position: inside;
   font-size: 30px;
@@ -657,7 +664,6 @@ h1 {
   margin: 1px;
   background-color: white;
   border-bottom: thin solid rgba(0, 0, 0, 0.99);
-
 }
 
 .container {
@@ -712,7 +718,6 @@ h1 {
 
 .subheadingTransaction2 h1 {
   font-size: 23px;
-
 }
 
 .form {
@@ -774,7 +779,7 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
   min-height: 11vh;
-  max-width: 15vw;
+  max-width: 20vw;
   /* border: solid purple; */
   contain: content;
   font-size: 2vh;
@@ -808,7 +813,7 @@ h1 {
   align-items: center;
   height: 20vh;
   width: 80vw;
-  /* border: solid green;  */
+  border: solid green;
 }
 
 .main-data-left {
